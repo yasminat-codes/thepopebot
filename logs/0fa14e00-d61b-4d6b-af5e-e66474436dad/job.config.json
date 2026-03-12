@@ -1,0 +1,4 @@
+{
+  "title": "List All Available API Keys and Credentials for Agent",
+  "job": "Run the llm-secrets skill to list all available API keys and credentials currently configured for the agent.\n\nCommand: skills/llm-secrets/list.sh (or equivalent command to list all AGENT_LLM_* environment variables and their names)\n\nOutput the full list of available credentials to the console so we can see what's been set up."
+}
