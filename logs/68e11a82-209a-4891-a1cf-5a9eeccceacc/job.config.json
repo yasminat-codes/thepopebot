@@ -1,4 +1,0 @@
-{
-  "title": "Update GitHub Repository Variable ALLOWED_PATHS for Auto-Merge Support",
-  "job": "Update the GitHub repository variable ALLOWED_PATHS to expand auto-merge support.\n\nUse the GitHub CLI to set the repository variable ALLOWED_PATHS to:\n/logs,/skills,/config,/cron,/triggers,/data,/docs\n\nSteps:\n1. Ensure GH_TOKEN, GH_OWNER, and GH_REPO environment variables are available\n2. Run: gh variable set ALLOWED_PATHS --body \"/logs,/skills,/config,/cron,/triggers,/data,/docs\"\n3. Verify the variable was set correctly by running: gh variable view ALLOWED_PATHS\n4. Output the confirmation to console\n\nThis will enable auto-merge for job PRs that modify these directories."
-}
