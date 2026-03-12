@@ -1,0 +1,75 @@
+{
+  "clickup": {
+    "credentials_path": "~/.config/clickup/credentials.json",
+    "schema_path": "~/.config/clickup/schema.json",
+    "workspace_id": "9011535077",
+    "workspace_name": "Smarterflo",
+    "member_id": "114117946",
+    "api_key": "pk_114117946_EWVSA6WPVYX540UPV5M589TTPLKKCWIU",
+    "spaces": {
+      "gtd_system": "90113987079",
+      "tasks_hub": "90113851264",
+      "automation_builds": "90112316591",
+      "smarterflo": "90113797722",
+      "strategy_foundation": "90113858681"
+    },
+    "default_lists": {
+      "inbox": "901112408966",
+      "projects": "901112408969",
+      "next_actions": "901112408968",
+      "waiting_for": "901112408970",
+      "someday_maybe": "901112408971",
+      "cold_outreach": "901112408962",
+      "client_delivery": "901112408963",
+      "sales_conversations": "901112408964",
+      "business360ai": "901112408965",
+      "agency_sops": "901112408967",
+      "internal_builds": "901106769732"
+    },
+    "default_assignee": "114117946"
+  },
+  "airtable": {
+    "base_id": "appltifhwH4CpeX6u",
+    "base_name": "Smarterflo CRM",
+    "tables": {
+      "clients": "Clients",
+      "projects": "Projects",
+      "leads": "Leads",
+      "campaigns": "Campaigns",
+      "icp": "ICP",
+      "offers": "Offers"
+    }
+  },
+  "todoist": {
+    "enabled": true,
+    "project_name": "BUSINESS",
+    "project_id": "2365779162",
+    "label": "clickup",
+    "sync_priorities": [1, 2],
+    "exclude_personal": true
+  },
+  "google_drive": {
+    "research_folder_id": null,
+    "docs_folder_id": null,
+    "auto_create_project_folders": true
+  },
+  "research_apis": {
+    "perplexity": true,
+    "brave": true,
+    "exa": true,
+    "tavily": true,
+    "serpapi": true,
+    "reddit": true
+  },
+  "notifications": {
+    "telegram_enabled": true,
+    "telegram_chat_id": "7233821403",
+    "daily_digest": false,
+    "deadline_warnings": true
+  },
+  "task_defaults": {
+    "required_fields": ["project", "context", "energy_levels", "time_needed"],
+    "default_status": "backlog",
+    "default_priority": 3
+  }
+}

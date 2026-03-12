@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "description": "Base 10 seed keywords — always included regardless of niche-keywords.json availability",
+  "keywords": [
+    "AI consulting",
+    "AI implementation",
+    "AI strategy",
+    "generative AI business",
+    "LLM deployment",
+    "AI change management",
+    "AI ROI",
+    "enterprise AI",
+    "AI automation",
+    "AI agents"
+  ]
+}

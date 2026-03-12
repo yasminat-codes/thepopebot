@@ -1,0 +1,459 @@
+{
+  "info": {
+    "_postman_id": "retell-ai-voice-agent-collection",
+    "name": "Retell AI Voice Agent API",
+    "description": "Complete Postman collection for the Retell AI REST API. Covers Agents, Retell LLMs, Calls, Voices, and Phone Numbers. Set the RETELL_API_KEY variable in your Postman environment before use.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "RETELL_API_KEY",
+      "value": "",
+      "type": "string",
+      "description": "Your Retell API key (Bearer token)"
+    },
+    {
+      "key": "agent_id",
+      "value": "agent_abc123",
+      "type": "string",
+      "description": "Agent ID for parameterized requests"
+    },
+    {
+      "key": "llm_id",
+      "value": "llm_abc123",
+      "type": "string",
+      "description": "Retell LLM ID for parameterized requests"
+    },
+    {
+      "key": "call_id",
+      "value": "call_abc123",
+      "type": "string",
+      "description": "Call ID for parameterized requests"
+    },
+    {
+      "key": "voice_id",
+      "value": "elevenlabs_voice_abc123",
+      "type": "string",
+      "description": "Voice ID for parameterized requests"
+    },
+    {
+      "key": "phone_number_id",
+      "value": "phone_abc123",
+      "type": "string",
+      "description": "Phone number ID for parameterized requests"
+    }
+  ],
+  "item": [
+    {
+      "name": "Agents",
+      "description": "Create, read, update, delete, and list Retell agents.",
+      "item": [
+        {
+          "name": "Create Agent",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/create-agent",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["create-agent"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agent_name\": \"Dr Smith Receptionist\",\n  \"voice_id\": \"{{voice_id}}\",\n  \"response_engine\": {\n    \"type\": \"retell-llm\",\n    \"llm_id\": \"{{llm_id}}\"\n  },\n  \"language\": \"en-US\",\n  \"voice_temperature\": 1.0,\n  \"voice_speed\": 1.0,\n  \"responsiveness\": 1.0,\n  \"interruption_sensitivity\": 0.8,\n  \"enable_backchannel\": true,\n  \"backchannel_frequency\": 0.8,\n  \"backchannel_words\": [\"yeah\", \"uh-huh\", \"right\", \"I see\"],\n  \"ambient_sound\": \"office\",\n  \"ambient_sound_volume\": 1.0,\n  \"denoising_mode\": \"low\",\n  \"end_call_after_silence_ms\": 30000,\n  \"max_call_duration_ms\": 1800000,\n  \"post_call_analysis_data\": [\n    {\n      \"name\": \"caller_name\",\n      \"type\": \"string\",\n      \"description\": \"Full name of the caller\"\n    },\n    {\n      \"name\": \"call_reason\",\n      \"type\": \"string\",\n      \"description\": \"Primary reason for the call\"\n    }\n  ],\n  \"webhook_url\": \"https://example.com/webhook\",\n  \"pronunciation_dictionary\": [\n    {\n      \"word\": \"Xeroflux\",\n      \"alphabet\": \"ipa\",\n      \"phoneme\": \"/ˈzɪəroʊflʌks/\"\n    }\n  ]\n}"
+            },
+            "description": "Creates a new Retell agent with voice, LLM, and behavioral settings."
+          }
+        },
+        {
+          "name": "Get Agent",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/get-agent/{{agent_id}}",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["get-agent", "{{agent_id}}"]
+            },
+            "description": "Retrieves full agent details by agent_id."
+          }
+        },
+        {
+          "name": "List Agents",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/list-agents",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["list-agents"]
+            },
+            "description": "Returns all agents in the account."
+          }
+        },
+        {
+          "name": "Update Agent",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/update-agent/{{agent_id}}",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["update-agent", "{{agent_id}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agent_name\": \"Updated Agent Name\",\n  \"voice_id\": \"{{voice_id}}\",\n  \"responsiveness\": 0.8,\n  \"interruption_sensitivity\": 0.6,\n  \"enable_backchannel\": true,\n  \"backchannel_frequency\": 0.9,\n  \"ambient_sound\": \"coffee-shop\",\n  \"ambient_sound_volume\": 0.5,\n  \"denoising_mode\": \"high\",\n  \"pronunciation_dictionary\": [\n    {\n      \"word\": \"Siobhan\",\n      \"alphabet\": \"ipa\",\n      \"phoneme\": \"ʃɪˈvɔːn\"\n    }\n  ]\n}"
+            },
+            "description": "Patches an existing agent with new settings. Only include fields you want to change."
+          }
+        },
+        {
+          "name": "Delete Agent",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/delete-agent/{{agent_id}}",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["delete-agent", "{{agent_id}}"]
+            },
+            "description": "Permanently deletes an agent. Returns 204 No Content on success."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Retell LLMs",
+      "description": "Create, read, update, delete, and list Retell LLM configurations.",
+      "item": [
+        {
+          "name": "Create Retell LLM",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/create-retell-llm",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["create-retell-llm"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"gpt-4o\",\n  \"general_prompt\": \"You are a professional medical receptionist for Dr. Smith's office. You handle appointment scheduling, answer general questions about the practice, and route urgent matters appropriately. Be warm, professional, and efficient.\",\n  \"general_tools\": [\n    {\n      \"type\": \"end_call\",\n      \"name\": \"end_call\",\n      \"description\": \"End the call when the conversation is complete.\"\n    },\n    {\n      \"type\": \"transfer_call\",\n      \"name\": \"transfer_to_nurse\",\n      \"description\": \"Transfer to the nurse line for medical questions.\",\n      \"number\": \"+14155559999\"\n    }\n  ],\n  \"states\": [\n    {\n      \"name\": \"greeting\",\n      \"state_prompt\": \"Greet the caller warmly. Ask how you can help them today.\",\n      \"transitions\": [\n        {\n          \"transition_name\": \"wants_appointment\",\n          \"description\": \"Caller wants to schedule, cancel, or reschedule an appointment.\",\n          \"destination\": \"scheduling\"\n        },\n        {\n          \"transition_name\": \"has_question\",\n          \"description\": \"Caller has a general question about the practice.\",\n          \"destination\": \"inquiry\"\n        }\n      ]\n    },\n    {\n      \"name\": \"scheduling\",\n      \"state_prompt\": \"Help the caller with their appointment. Collect date preferences and reason for visit.\",\n      \"transitions\": [\n        {\n          \"transition_name\": \"appointment_handled\",\n          \"description\": \"Appointment request has been processed.\",\n          \"destination\": \"closing\"\n        }\n      ]\n    },\n    {\n      \"name\": \"inquiry\",\n      \"state_prompt\": \"Answer the caller's question about office hours, location, or accepted insurance.\",\n      \"transitions\": [\n        {\n          \"transition_name\": \"question_answered\",\n          \"description\": \"The caller's question has been answered.\",\n          \"destination\": \"closing\"\n        }\n      ]\n    },\n    {\n      \"name\": \"closing\",\n      \"state_prompt\": \"Ask if there is anything else. If not, thank them and end the call politely.\",\n      \"transitions\": []\n    }\n  ],\n  \"starting_state\": \"greeting\",\n  \"begin_message\": \"Good morning! Thank you for calling Dr. Smith's office. How can I help you today?\",\n  \"inbound_dynamic_variables_webhook_url\": \"\",\n  \"model_temperature\": 0.7\n}"
+            },
+            "description": "Creates a new Retell LLM configuration with system prompt, states, tools, and model settings."
+          }
+        },
+        {
+          "name": "Get Retell LLM",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/get-retell-llm/{{llm_id}}",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["get-retell-llm", "{{llm_id}}"]
+            },
+            "description": "Retrieves full LLM configuration by llm_id."
+          }
+        },
+        {
+          "name": "List Retell LLMs",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/list-retell-llms",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["list-retell-llms"]
+            },
+            "description": "Returns all Retell LLM configurations in the account."
+          }
+        },
+        {
+          "name": "Update Retell LLM",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/update-retell-llm/{{llm_id}}",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["update-retell-llm", "{{llm_id}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"gpt-4o-mini\",\n  \"general_prompt\": \"Updated system prompt with new instructions.\",\n  \"model_temperature\": 0.5,\n  \"begin_message\": \"Hello! Thanks for calling. How may I assist you?\"\n}"
+            },
+            "description": "Patches an existing Retell LLM configuration. Only include fields you want to change."
+          }
+        },
+        {
+          "name": "Delete Retell LLM",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/delete-retell-llm/{{llm_id}}",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["delete-retell-llm", "{{llm_id}}"]
+            },
+            "description": "Permanently deletes a Retell LLM configuration. Returns 204 No Content on success."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Calls",
+      "description": "Create phone calls, create web calls, retrieve call details, and list calls.",
+      "item": [
+        {
+          "name": "Create Phone Call",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/v2/create-phone-call",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["v2", "create-phone-call"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from_number\": \"+14155551234\",\n  \"to_number\": \"+14155555678\",\n  \"agent_id\": \"{{agent_id}}\",\n  \"retell_llm_dynamic_variables\": {\n    \"customer_name\": \"John Doe\",\n    \"appointment_date\": \"2025-03-15\"\n  },\n  \"metadata\": {\n    \"campaign\": \"appointment_reminder\",\n    \"crm_id\": \"contact_12345\"\n  }\n}"
+            },
+            "description": "Triggers an outbound phone call via the Retell platform."
+          }
+        },
+        {
+          "name": "Create Web Call",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/v2/create-web-call",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["v2", "create-web-call"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agent_id\": \"{{agent_id}}\",\n  \"retell_llm_dynamic_variables\": {\n    \"customer_name\": \"Jane Smith\"\n  },\n  \"metadata\": {\n    \"source\": \"website_widget\",\n    \"page\": \"pricing\"\n  }\n}"
+            },
+            "description": "Creates a web-based call session. Returns an access_token for the Retell Web SDK."
+          }
+        },
+        {
+          "name": "Get Call",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/v2/get-call/{{call_id}}",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["v2", "get-call", "{{call_id}}"]
+            },
+            "description": "Retrieves call details including transcript, analysis, and timestamps."
+          }
+        },
+        {
+          "name": "List Calls",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/v2/list-calls?sort_order=descending&limit=50",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["v2", "list-calls"],
+              "query": [
+                { "key": "sort_order", "value": "descending", "description": "Sort by creation time: ascending or descending" },
+                { "key": "limit", "value": "50", "description": "Max number of calls to return (1-1000)" },
+                { "key": "filter_criteria", "value": "", "description": "Optional JSON filter criteria", "disabled": true }
+              ]
+            },
+            "description": "Returns a paginated list of calls. Supports sorting and filtering."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Voices",
+      "description": "List and retrieve available voice options from all providers.",
+      "item": [
+        {
+          "name": "List Voices",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/list-voices",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["list-voices"]
+            },
+            "description": "Returns all available voices across all providers (ElevenLabs, OpenAI, Deepgram, Cartesia, PlayHT)."
+          }
+        },
+        {
+          "name": "Get Voice",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/get-voice/{{voice_id}}",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["get-voice", "{{voice_id}}"]
+            },
+            "description": "Retrieves details for a specific voice including provider, accent, gender, age, and preview audio URL."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Phone Numbers",
+      "description": "Manage phone numbers associated with agents.",
+      "item": [
+        {
+          "name": "List Phone Numbers",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/list-phone-numbers",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["list-phone-numbers"]
+            },
+            "description": "Returns all phone numbers in the account with their assigned agents."
+          }
+        },
+        {
+          "name": "Get Phone Number",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/get-phone-number/{{phone_number_id}}",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["get-phone-number", "{{phone_number_id}}"]
+            },
+            "description": "Retrieves details for a specific phone number."
+          }
+        },
+        {
+          "name": "Import Phone Number",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/import-phone-number",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["import-phone-number"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone_number\": \"+14155551234\",\n  \"termination_uri\": \"sip:example.pstn.twilio.com\",\n  \"agent_id\": \"{{agent_id}}\"\n}"
+            },
+            "description": "Imports an existing phone number (e.g., from Twilio) and assigns it to an agent."
+          }
+        },
+        {
+          "name": "Update Phone Number",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/update-phone-number/{{phone_number_id}}",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["update-phone-number", "{{phone_number_id}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agent_id\": \"{{agent_id}}\",\n  \"nickname\": \"Main Office Line\"\n}"
+            },
+            "description": "Updates phone number settings, including the assigned agent."
+          }
+        },
+        {
+          "name": "Delete Phone Number",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{RETELL_API_KEY}}" }
+            ],
+            "url": {
+              "raw": "https://api.retellai.com/delete-phone-number/{{phone_number_id}}",
+              "protocol": "https",
+              "host": ["api", "retellai", "com"],
+              "path": ["delete-phone-number", "{{phone_number_id}}"]
+            },
+            "description": "Removes a phone number from the account. Returns 204 No Content on success."
+          }
+        }
+      ]
+    }
+  ]
+}

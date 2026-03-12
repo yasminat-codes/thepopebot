@@ -1,0 +1,56 @@
+# Metricool API Configuration Template
+# Copy this file and fill in your values
+
+# API Credentials
+# Get these from Account Settings → API tab
+credentials:
+  user_token: "YOUR_API_TOKEN"
+  user_id: "YOUR_USER_ID"
+  blog_id: "YOUR_BLOG_ID"
+
+# API Settings
+api:
+  base_url: "https://app.metricool.com/api"
+  timeout: 30  # seconds
+  max_retries: 3
+
+# Rate Limiting
+rate_limiting:
+  enabled: true
+  initial_delay: 1  # seconds
+  max_delay: 60  # seconds
+  backoff_multiplier: 2
+
+# Caching (optional)
+cache:
+  enabled: true
+  ttl: 3600  # seconds (1 hour)
+  directory: "./cache"
+
+# Logging
+logging:
+  enabled: true
+  level: "info"  # debug, info, warn, error
+  file: "./metricool-api.log"
+
+# Default Parameters
+defaults:
+  # Default date range for analytics (days)
+  date_range: 30
+
+  # Default platforms to fetch
+  platforms:
+    - instagram
+    - facebook
+    - tiktok
+
+  # Default timezone
+  timezone: "America/New_York"
+
+# Export Settings
+export:
+  # Output format for data exports
+  format: "json"  # json, csv
+
+  # Output directory
+  directory: "./exports"

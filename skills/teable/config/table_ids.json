@@ -1,0 +1,59 @@
+{
+  "base_id": "bseMapd4GGreO0szW6i",
+  "tables": {
+    "projects": {
+      "id": "tblbjRY89ehKmhLBDFI",
+      "views": {
+        "kanban": "viwWOjFwaYYjn5K50sP",
+        "grid": "viw4H4JHRsL1H2Ss8QU"
+      }
+    },
+    "epics": {
+      "id": "tblgXvfiZsCQv5mMYX5",
+      "views": {
+        "grid": "viwJryxounOsS8Z5XpO"
+      }
+    },
+    "tasks": {
+      "id": "tbl7aRcJtI3MxSRaWCw",
+      "views": {
+        "kanban": "viwA9alYlTV3z30O49d",
+        "needs_review": "viwib51BZZ2TtabhwQb",
+        "blocked": "viwpdFXZTrAhCZkHsrs",
+        "ready_queue": "viw0NMFazlTDyrI25jj",
+        "completed": "viwVYx7JScdstSg1jRY",
+        "calendar": "viw8o6icNwIvSwBoXEC",
+        "agent_views": {
+          "amira": "viwU6PXocRx604yozWk",
+          "rashid": "viwzNDg58oNskNDstQD",
+          "fatima": "viw6xMtQHXSWTI4GWr1",
+          "layla": "viwntqoEEHlNXKNqn3T",
+          "salma": "viwHaDfKzVLONaZXc3f",
+          "qamar": "viwKk1Tu7WBZ7jsABa3",
+          "najat": "viwTVduiYWuB6cVG9y3",
+          "tariq": "viwYrElKX2HyZaHrC1P",
+          "yusuf": "viwdfLKpn474RNVxXAY",
+          "idris": "viwPsY6cHXHgdZfmtfc",
+          "zahra": "viwvtwF9th5Ez0xKxwu",
+          "mariam": "viwX2hleFgrtPYb3UOZ",
+          "rafi": "viwbmD7WqChw2ftnzqL",
+          "hana": "viwnQA6EBKA5JXBb0UO",
+          "aisha": "viwsDSZJF7fnm7wKikR",
+          "hamza": "viwygzqhE1DwjKH8pMQ"
+        }
+      }
+    },
+    "activity_log": {
+      "id": "tbl927x818JZ9mP5b6M"
+    },
+    "task_templates": {
+      "id": "tble0swAPNmeeEjiDg2"
+    },
+    "agents": {
+      "id": "tbl4HM37UIoxwXHZMXf"
+    },
+    "sop_index": {
+      "id": "tblqKy78iJn1hwPL4Kd"
+    }
+  }
+}

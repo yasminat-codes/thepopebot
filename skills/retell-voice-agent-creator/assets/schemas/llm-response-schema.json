@@ -1,0 +1,184 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://retellai.com/schemas/llm-response.json",
+  "title": "Retell Create LLM Response",
+  "description": "JSON Schema for the response returned by the Retell Create Retell LLM (POST /create-retell-llm) and Get Retell LLM (GET /get-retell-llm/:llm_id) endpoints.",
+  "type": "object",
+  "required": ["llm_id"],
+  "properties": {
+    "llm_id": {
+      "type": "string",
+      "description": "Unique identifier for the LLM configuration. Format: llm_XXXXX.",
+      "pattern": "^llm_"
+    },
+    "model": {
+      "type": "string",
+      "description": "The LLM model used for generating responses.",
+      "enum": [
+        "gpt-4o",
+        "gpt-4o-mini",
+        "gpt-4-turbo",
+        "gpt-3.5-turbo",
+        "claude-3.5-sonnet",
+        "claude-3-haiku",
+        "claude-3-sonnet",
+        "claude-3-opus"
+      ],
+      "default": "gpt-4o"
+    },
+    "general_prompt": {
+      "type": ["string", "null"],
+      "description": "The system-level prompt defining the agent's persona, instructions, and behavior."
+    },
+    "general_tools": {
+      "type": "array",
+      "description": "Tools available across all conversation states.",
+      "items": {
+        "type": "object",
+        "required": ["type", "name", "description"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Tool type.",
+            "enum": [
+              "end_call",
+              "transfer_call",
+              "check_availability_cal",
+              "book_appointment_cal",
+              "press_digit",
+              "custom"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "Unique name for the tool."
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of when and how the tool should be used."
+          },
+          "number": {
+            "type": "string",
+            "description": "Phone number for transfer_call tool type."
+          },
+          "url": {
+            "type": "string",
+            "description": "Webhook URL for custom tool type.",
+            "format": "uri"
+          },
+          "speak_during_execution": {
+            "type": "boolean",
+            "description": "Whether the agent speaks while the tool executes.",
+            "default": true
+          },
+          "speak_after_execution": {
+            "type": "boolean",
+            "description": "Whether the agent speaks after the tool returns.",
+            "default": true
+          },
+          "execution_message_description": {
+            "type": "string",
+            "description": "Description of what to say while the tool executes."
+          },
+          "parameters": {
+            "type": "object",
+            "description": "JSON Schema for the tool's input parameters (custom tool type only)."
+          },
+          "cal_api_key": {
+            "type": "string",
+            "description": "Cal.com API key (check_availability_cal and book_appointment_cal types)."
+          },
+          "event_type_id": {
+            "type": "string",
+            "description": "Cal.com event type ID (check_availability_cal and book_appointment_cal types)."
+          },
+          "timezone": {
+            "type": "string",
+            "description": "Timezone for Cal.com tools (e.g., 'America/New_York')."
+          }
+        }
+      }
+    },
+    "states": {
+      "type": ["array", "null"],
+      "description": "Conversation states for multi-step flows.",
+      "items": {
+        "type": "object",
+        "required": ["name", "state_prompt"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Unique name for the state."
+          },
+          "state_prompt": {
+            "type": "string",
+            "description": "Instructions for the agent when in this state."
+          },
+          "transitions": {
+            "type": "array",
+            "description": "Possible transitions from this state.",
+            "items": {
+              "type": "object",
+              "required": ["transition_name", "description", "destination"],
+              "properties": {
+                "transition_name": {
+                  "type": "string",
+                  "description": "Unique name for the transition."
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Condition that triggers this transition."
+                },
+                "destination": {
+                  "type": "string",
+                  "description": "Name of the destination state."
+                },
+                "parameters": {
+                  "type": "object",
+                  "description": "Optional parameters to extract during transition."
+                }
+              }
+            }
+          },
+          "tools": {
+            "type": "array",
+            "description": "Tools available only in this state (same schema as general_tools items).",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "starting_state": {
+      "type": ["string", "null"],
+      "description": "Name of the initial state. Must match a state name in the states array."
+    },
+    "begin_message": {
+      "type": ["string", "null"],
+      "description": "The first message the agent speaks when the call starts. Null means the agent waits for the caller."
+    },
+    "inbound_dynamic_variables_webhook_url": {
+      "type": ["string", "null"],
+      "description": "URL called on inbound calls to fetch dynamic variables.",
+      "format": "uri"
+    },
+    "model_temperature": {
+      "type": "number",
+      "description": "Controls LLM response randomness.",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0.7
+    },
+    "tool_call_strict_mode": {
+      "type": "boolean",
+      "description": "Whether the LLM strictly follows tool schemas.",
+      "default": true
+    },
+    "last_modification_timestamp": {
+      "type": "integer",
+      "description": "Unix timestamp of the last modification."
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,3958 @@
+{
+  "client_onboarding": {
+    "name": "Client Onboarding",
+    "description": "Standard client onboarding workflow",
+    "category": "client",
+    "phases": [
+      {
+        "name": "Discovery & Setup",
+        "duration": "Week 1",
+        "tasks": [
+          {
+            "name": "Send welcome email & questionnaire",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Send branded welcome email with intake questionnaire"
+          },
+          {
+            "name": "Schedule kickoff call",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Book 60-min discovery call"
+          },
+          {
+            "name": "Conduct kickoff call",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Understand goals, pain points, current state"
+          },
+          {
+            "name": "Collect all access & credentials",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Logins, API keys, admin access"
+          },
+          {
+            "name": "Current state audit",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Document existing workflows, tools, data"
+          },
+          {
+            "name": "Document existing workflows",
+            "priority": 3,
+            "time_estimate": "2h",
+            "description": "Map current processes for reference"
+          }
+        ]
+      },
+      {
+        "name": "Solution Design",
+        "duration": "Week 2",
+        "tasks": [
+          {
+            "name": "Create requirements document",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Detailed requirements based on discovery",
+            "create_doc": true
+          },
+          {
+            "name": "Design solution architecture",
+            "priority": 1,
+            "time_estimate": "3h",
+            "description": "Technical design for proposed solution",
+            "create_doc": true
+          },
+          {
+            "name": "Build project timeline",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Milestones, deliverables, dependencies"
+          },
+          {
+            "name": "Client approval checkpoint",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Present design and get sign-off"
+          },
+          {
+            "name": "Set up project tracking",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Create Airtable/ClickUp entries"
+          }
+        ]
+      },
+      {
+        "name": "Implementation",
+        "duration": "Weeks 3-4",
+        "tasks": [
+          {
+            "name": "Build core deliverable #1",
+            "priority": 1,
+            "time_estimate": "8h",
+            "description": "First major automation/system"
+          },
+          {
+            "name": "Build core deliverable #2",
+            "priority": 2,
+            "time_estimate": "8h",
+            "description": "Second major automation/system"
+          },
+          {
+            "name": "Internal testing & QA",
+            "priority": 2,
+            "time_estimate": "4h",
+            "description": "Test with real data"
+          },
+          {
+            "name": "Client review session",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Demo and collect feedback"
+          },
+          {
+            "name": "Implement feedback",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Make requested changes"
+          }
+        ]
+      },
+      {
+        "name": "Launch & Handoff",
+        "duration": "Week 5",
+        "tasks": [
+          {
+            "name": "Go-live preparation",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Final checks, data migration"
+          },
+          {
+            "name": "Go live",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Deploy to production"
+          },
+          {
+            "name": "Training session",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Train client team"
+          },
+          {
+            "name": "Create documentation",
+            "priority": 2,
+            "time_estimate": "3h",
+            "description": "SOPs, guides, runbooks",
+            "create_doc": true
+          },
+          {
+            "name": "Handoff meeting",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Final handoff, Q&A"
+          },
+          {
+            "name": "Schedule 30-day check-in",
+            "priority": 3,
+            "time_estimate": "15m",
+            "description": "Book follow-up call"
+          }
+        ]
+      }
+    ]
+  },
+  "ai_automation": {
+    "name": "AI/Automation Build",
+    "description": "Building AI agents, automations, scripts",
+    "category": "development",
+    "phases": [
+      {
+        "name": "Research & Planning",
+        "duration": "Days 1-2",
+        "tasks": [
+          {
+            "name": "Define requirements & success criteria",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Clear definition of what success looks like",
+            "create_doc": true
+          },
+          {
+            "name": "Research tools, APIs, libraries",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Evaluate options, select best approach",
+            "research": true
+          },
+          {
+            "name": "Estimate complexity & hours",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Break down for scoping/quoting"
+          },
+          {
+            "name": "Create technical specification",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Detailed technical design",
+            "create_doc": true
+          }
+        ]
+      },
+      {
+        "name": "Development",
+        "duration": "Days 3-7",
+        "tasks": [
+          {
+            "name": "Set up development environment",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Python env, dependencies, config"
+          },
+          {
+            "name": "Build core functionality",
+            "priority": 1,
+            "time_estimate": "6h",
+            "description": "Main logic and features"
+          },
+          {
+            "name": "Implement error handling & retries",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Graceful failures, logging"
+          },
+          {
+            "name": "Add monitoring & alerts",
+            "priority": 3,
+            "time_estimate": "1h",
+            "description": "Track success/failure"
+          },
+          {
+            "name": "Write tests",
+            "priority": 3,
+            "time_estimate": "2h",
+            "description": "Unit and integration tests"
+          },
+          {
+            "name": "Code documentation",
+            "priority": 3,
+            "time_estimate": "1h",
+            "description": "README, inline comments"
+          }
+        ]
+      },
+      {
+        "name": "Testing & Deployment",
+        "duration": "Days 8-9",
+        "tasks": [
+          {
+            "name": "Test with sample data",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Verify with realistic cases"
+          },
+          {
+            "name": "Client UAT",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Client testing and feedback"
+          },
+          {
+            "name": "Deploy to production",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Production deployment"
+          },
+          {
+            "name": "Monitor first 48 hours",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Watch for issues"
+          }
+        ]
+      },
+      {
+        "name": "Maintenance Setup",
+        "duration": "Day 10",
+        "tasks": [
+          {
+            "name": "Create runbook",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Troubleshooting guide",
+            "create_doc": true
+          },
+          {
+            "name": "Set up alerting",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Error notifications"
+          },
+          {
+            "name": "Schedule maintenance review",
+            "priority": 4,
+            "time_estimate": "15m",
+            "description": "Quarterly check-in"
+          }
+        ]
+      }
+    ]
+  },
+  "cold_email_campaign": {
+    "name": "Cold Email Campaign",
+    "description": "End-to-end cold outreach campaign",
+    "category": "marketing",
+    "phases": [
+      {
+        "name": "Research & Targeting",
+        "duration": "Days 1-2",
+        "tasks": [
+          {
+            "name": "Define ICP criteria",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Industry, company size, titles, geography",
+            "create_doc": true,
+            "research": true
+          },
+          {
+            "name": "Research target industry",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Pain points, trends, language they use",
+            "research": true
+          },
+          {
+            "name": "Identify where prospects hang out",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "LinkedIn groups, communities, podcasts",
+            "research": true
+          },
+          {
+            "name": "Build lead list",
+            "priority": 1,
+            "time_estimate": "3h",
+            "description": "Source leads matching ICP"
+          },
+          {
+            "name": "Verify emails (Reoon/EmailVerify)",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Clean the list"
+          }
+        ]
+      },
+      {
+        "name": "Content Creation",
+        "duration": "Days 3-4",
+        "tasks": [
+          {
+            "name": "Write initial email",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Hook, value prop, CTA"
+          },
+          {
+            "name": "Write follow-up sequence (3 emails)",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Value-add follow-ups"
+          },
+          {
+            "name": "Create 3 subject line variants",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "A/B testing"
+          },
+          {
+            "name": "Build reply templates",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Interested, objections, meeting book"
+          },
+          {
+            "name": "Client approval on copy",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Sign-off before sending"
+          }
+        ]
+      },
+      {
+        "name": "Campaign Setup",
+        "duration": "Day 5",
+        "tasks": [
+          {
+            "name": "Check domain health",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "SPF, DKIM, DMARC, warmup status"
+          },
+          {
+            "name": "Set up Instantly campaign",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Import leads, configure sequence"
+          },
+          {
+            "name": "Configure sending schedule",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Timezone, days, daily limits"
+          },
+          {
+            "name": "Test with internal emails",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Preview before launch"
+          }
+        ]
+      },
+      {
+        "name": "Launch & Optimize",
+        "duration": "Ongoing",
+        "tasks": [
+          {
+            "name": "Launch campaign",
+            "priority": 1,
+            "time_estimate": "15m",
+            "description": "Activate sending"
+          },
+          {
+            "name": "Daily reply monitoring",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Respond within 24h"
+          },
+          {
+            "name": "Week 1 stats review",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Open rates, reply rates, bounces"
+          },
+          {
+            "name": "A/B test analysis",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Pick winners"
+          },
+          {
+            "name": "Optimize or pivot",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Adjust based on data"
+          }
+        ]
+      }
+    ]
+  },
+  "website_build": {
+    "name": "Website/Landing Page",
+    "description": "Website or landing page build",
+    "category": "development",
+    "phases": [
+      {
+        "name": "Discovery",
+        "duration": "Days 1-2",
+        "tasks": [
+          {
+            "name": "Review brand guidelines",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Colors, fonts, tone, assets"
+          },
+          {
+            "name": "Competitor analysis",
+            "priority": 3,
+            "time_estimate": "2h",
+            "description": "Review 3-5 competitor sites",
+            "research": true
+          },
+          {
+            "name": "Create sitemap",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Page structure",
+            "create_doc": true
+          },
+          {
+            "name": "Create wireframes",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Layout sketches"
+          },
+          {
+            "name": "Define content requirements",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Copy, images, videos needed"
+          }
+        ]
+      },
+      {
+        "name": "Design",
+        "duration": "Days 3-5",
+        "tasks": [
+          {
+            "name": "Design homepage",
+            "priority": 1,
+            "time_estimate": "4h",
+            "description": "Full homepage mockup"
+          },
+          {
+            "name": "Design key pages",
+            "priority": 2,
+            "time_estimate": "4h",
+            "description": "About, services, contact, etc."
+          },
+          {
+            "name": "Mobile responsive design",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Mobile layouts"
+          },
+          {
+            "name": "Client feedback round",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Review and revisions"
+          }
+        ]
+      },
+      {
+        "name": "Development",
+        "duration": "Days 6-10",
+        "tasks": [
+          {
+            "name": "Build homepage",
+            "priority": 1,
+            "time_estimate": "4h",
+            "description": "Code homepage"
+          },
+          {
+            "name": "Build inner pages",
+            "priority": 2,
+            "time_estimate": "6h",
+            "description": "All other pages"
+          },
+          {
+            "name": "Add forms & integrations",
+            "priority": 2,
+            "time_estimate": "3h",
+            "description": "Contact forms, CRM hooks"
+          },
+          {
+            "name": "SEO setup",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Meta tags, sitemap, schema"
+          },
+          {
+            "name": "Speed optimization",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Image compression, caching"
+          }
+        ]
+      },
+      {
+        "name": "Launch",
+        "duration": "Days 11-12",
+        "tasks": [
+          {
+            "name": "Cross-browser QA",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Test all browsers"
+          },
+          {
+            "name": "Link and form testing",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Verify all work"
+          },
+          {
+            "name": "DNS & hosting setup",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Point domain, SSL"
+          },
+          {
+            "name": "Go live",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Publish"
+          },
+          {
+            "name": "Analytics verification",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Confirm tracking works"
+          }
+        ]
+      }
+    ]
+  },
+  "web_app_development": {
+    "name": "Web App Development",
+    "description": "Full web application development project",
+    "category": "development",
+    "phases": [
+      {
+        "name": "Planning & Design",
+        "duration": "Week 1",
+        "tasks": [
+          {
+            "name": "Requirements gathering",
+            "priority": 1,
+            "time_estimate": "3h",
+            "description": "Detailed feature requirements",
+            "create_doc": true
+          },
+          {
+            "name": "User stories & use cases",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Define user flows",
+            "create_doc": true
+          },
+          {
+            "name": "Database schema design",
+            "priority": 1,
+            "time_estimate": "3h",
+            "description": "Tables, relationships, indexes",
+            "create_doc": true
+          },
+          {
+            "name": "API design",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Endpoints, payloads, auth",
+            "create_doc": true
+          },
+          {
+            "name": "Tech stack selection",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Frontend, backend, DB, hosting",
+            "research": true
+          },
+          {
+            "name": "UI/UX wireframes",
+            "priority": 2,
+            "time_estimate": "4h",
+            "description": "All key screens"
+          },
+          {
+            "name": "Project timeline & milestones",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Sprint planning"
+          }
+        ]
+      },
+      {
+        "name": "Backend Development",
+        "duration": "Weeks 2-3",
+        "tasks": [
+          {
+            "name": "Set up project structure",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Repo, CI/CD, env config"
+          },
+          {
+            "name": "Database setup & migrations",
+            "priority": 1,
+            "time_estimate": "3h",
+            "description": "Create tables"
+          },
+          {
+            "name": "Authentication system",
+            "priority": 1,
+            "time_estimate": "4h",
+            "description": "Login, signup, sessions"
+          },
+          {
+            "name": "Core API endpoints",
+            "priority": 1,
+            "time_estimate": "12h",
+            "description": "CRUD operations"
+          },
+          {
+            "name": "Business logic layer",
+            "priority": 1,
+            "time_estimate": "8h",
+            "description": "Core functionality"
+          },
+          {
+            "name": "Third-party integrations",
+            "priority": 2,
+            "time_estimate": "6h",
+            "description": "External APIs"
+          },
+          {
+            "name": "Backend testing",
+            "priority": 2,
+            "time_estimate": "4h",
+            "description": "Unit & integration tests"
+          }
+        ]
+      },
+      {
+        "name": "Frontend Development",
+        "duration": "Weeks 3-4",
+        "tasks": [
+          {
+            "name": "Project setup & routing",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Framework, router, state"
+          },
+          {
+            "name": "Component library setup",
+            "priority": 2,
+            "time_estimate": "3h",
+            "description": "UI components"
+          },
+          {
+            "name": "Authentication UI",
+            "priority": 1,
+            "time_estimate": "4h",
+            "description": "Login, signup, forgot password"
+          },
+          {
+            "name": "Dashboard/main views",
+            "priority": 1,
+            "time_estimate": "12h",
+            "description": "Core screens"
+          },
+          {
+            "name": "Forms & data entry",
+            "priority": 2,
+            "time_estimate": "6h",
+            "description": "Input validation"
+          },
+          {
+            "name": "API integration",
+            "priority": 1,
+            "time_estimate": "4h",
+            "description": "Connect to backend"
+          },
+          {
+            "name": "Responsive design",
+            "priority": 2,
+            "time_estimate": "4h",
+            "description": "Mobile/tablet views"
+          }
+        ]
+      },
+      {
+        "name": "Testing & Launch",
+        "duration": "Week 5",
+        "tasks": [
+          {
+            "name": "End-to-end testing",
+            "priority": 1,
+            "time_estimate": "6h",
+            "description": "Full user flows"
+          },
+          {
+            "name": "Performance optimization",
+            "priority": 2,
+            "time_estimate": "4h",
+            "description": "Speed, caching"
+          },
+          {
+            "name": "Security audit",
+            "priority": 1,
+            "time_estimate": "4h",
+            "description": "OWASP checks"
+          },
+          {
+            "name": "Staging deployment",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Test environment"
+          },
+          {
+            "name": "Client UAT",
+            "priority": 1,
+            "time_estimate": "4h",
+            "description": "Client testing"
+          },
+          {
+            "name": "Production deployment",
+            "priority": 1,
+            "time_estimate": "3h",
+            "description": "Go live"
+          },
+          {
+            "name": "Documentation",
+            "priority": 2,
+            "time_estimate": "4h",
+            "description": "User guide, API docs",
+            "create_doc": true
+          }
+        ]
+      }
+    ]
+  },
+  "market_research": {
+    "name": "Market Research",
+    "description": "Comprehensive market research project",
+    "category": "research",
+    "auto_research": true,
+    "phases": [
+      {
+        "name": "Industry Analysis",
+        "duration": "Days 1-2",
+        "tasks": [
+          {
+            "name": "Industry overview research",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Market size, growth, trends",
+            "research": true,
+            "research_queries": [
+              "[industry] market size 2024",
+              "[industry] market trends",
+              "[industry] growth forecast"
+            ]
+          },
+          {
+            "name": "Key players analysis",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Top companies, market share",
+            "research": true,
+            "research_queries": [
+              "top companies in [industry]",
+              "[industry] market leaders",
+              "[industry] competitive landscape"
+            ]
+          },
+          {
+            "name": "Regulatory landscape",
+            "priority": 3,
+            "time_estimate": "1h",
+            "description": "Laws, compliance, barriers",
+            "research": true
+          },
+          {
+            "name": "Technology trends",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Tech shaping the industry",
+            "research": true
+          }
+        ]
+      },
+      {
+        "name": "Customer Analysis",
+        "duration": "Days 3-4",
+        "tasks": [
+          {
+            "name": "Define target segments",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Customer types, demographics",
+            "create_doc": true
+          },
+          {
+            "name": "Pain points research",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Problems they face",
+            "research": true,
+            "research_queries": [
+              "[industry] customer pain points",
+              "[industry] challenges",
+              "what problems do [target] face"
+            ]
+          },
+          {
+            "name": "Buying behavior analysis",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "How they make decisions",
+            "research": true
+          },
+          {
+            "name": "Where they hang out",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Communities, platforms, events",
+            "research": true,
+            "research_queries": [
+              "[industry] communities",
+              "[industry] forums",
+              "where do [target] network"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Competitive Analysis",
+        "duration": "Days 5-6",
+        "tasks": [
+          {
+            "name": "Competitor identification",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Direct and indirect competitors",
+            "research": true
+          },
+          {
+            "name": "Competitor deep dive (top 5)",
+            "priority": 1,
+            "time_estimate": "4h",
+            "description": "Pricing, features, positioning",
+            "research": true,
+            "create_doc": true
+          },
+          {
+            "name": "Competitive gap analysis",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Opportunities, white space"
+          },
+          {
+            "name": "Win/loss analysis framework",
+            "priority": 3,
+            "time_estimate": "1h",
+            "description": "Why customers choose alternatives"
+          }
+        ]
+      },
+      {
+        "name": "Synthesis & Deliverables",
+        "duration": "Day 7",
+        "tasks": [
+          {
+            "name": "Compile research findings",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Organize all data",
+            "create_doc": true
+          },
+          {
+            "name": "Create executive summary",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Key insights, 1-pager",
+            "create_doc": true
+          },
+          {
+            "name": "Build recommendations",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Strategic recommendations"
+          },
+          {
+            "name": "Present findings",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Review with stakeholders"
+          }
+        ]
+      }
+    ]
+  },
+  "niche_research": {
+    "name": "Niche Research",
+    "description": "Deep dive into a specific niche for targeting",
+    "category": "research",
+    "auto_research": true,
+    "phases": [
+      {
+        "name": "Niche Definition",
+        "duration": "Day 1",
+        "tasks": [
+          {
+            "name": "Define niche parameters",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Industry, size, geography, characteristics",
+            "create_doc": true
+          },
+          {
+            "name": "Initial viability check",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Is this niche worth pursuing?",
+            "research": true,
+            "research_queries": [
+              "[niche] market opportunity",
+              "[niche] businesses count",
+              "[niche] demand"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Niche Deep Dive",
+        "duration": "Days 2-3",
+        "tasks": [
+          {
+            "name": "Niche landscape mapping",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Key players, structure",
+            "research": true
+          },
+          {
+            "name": "Common pain points",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "What keeps them up at night",
+            "research": true,
+            "research_queries": [
+              "[niche] biggest challenges",
+              "[niche] common problems",
+              "[niche] frustrations"
+            ]
+          },
+          {
+            "name": "Current solutions used",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Tools, services they use",
+            "research": true
+          },
+          {
+            "name": "Budget & willingness to pay",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Pricing expectations",
+            "research": true
+          },
+          {
+            "name": "Decision makers & influencers",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Who makes buying decisions",
+            "research": true
+          }
+        ]
+      },
+      {
+        "name": "Outreach Strategy",
+        "duration": "Day 4",
+        "tasks": [
+          {
+            "name": "Where they hang out online",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Communities, groups, forums",
+            "research": true,
+            "research_queries": [
+              "[niche] online communities",
+              "[niche] LinkedIn groups",
+              "[niche] associations"
+            ]
+          },
+          {
+            "name": "Content they consume",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Podcasts, newsletters, influencers",
+            "research": true
+          },
+          {
+            "name": "Events & conferences",
+            "priority": 3,
+            "time_estimate": "30m",
+            "description": "Industry events",
+            "research": true
+          },
+          {
+            "name": "Language & terminology",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "How they talk about problems",
+            "research": true
+          }
+        ]
+      },
+      {
+        "name": "Deliverables",
+        "duration": "Day 5",
+        "tasks": [
+          {
+            "name": "Create niche profile doc",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Complete niche overview",
+            "create_doc": true
+          },
+          {
+            "name": "Build ICP for niche",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Ideal customer profile",
+            "create_doc": true
+          },
+          {
+            "name": "Outreach angle recommendations",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Messaging approach"
+          },
+          {
+            "name": "Go/no-go decision",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Final recommendation"
+          }
+        ]
+      }
+    ]
+  },
+  "skool_community_research": {
+    "name": "Skool Community Research",
+    "description": "Research Skool communities for leads or learning",
+    "category": "research",
+    "auto_research": true,
+    "phases": [
+      {
+        "name": "Community Discovery",
+        "duration": "Day 1",
+        "tasks": [
+          {
+            "name": "Search relevant Skool communities",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Find communities in target niche",
+            "research": true,
+            "research_queries": [
+              "[niche] skool community",
+              "best skool communities for [topic]",
+              "[industry] skool groups"
+            ]
+          },
+          {
+            "name": "Evaluate community quality",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Member count, activity, value"
+          },
+          {
+            "name": "List top 10 communities",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Shortlist best ones",
+            "create_doc": true
+          }
+        ]
+      },
+      {
+        "name": "Deep Analysis",
+        "duration": "Days 2-3",
+        "tasks": [
+          {
+            "name": "Join/observe top communities",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Understand culture, rules"
+          },
+          {
+            "name": "Analyze member profiles",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Who are the members"
+          },
+          {
+            "name": "Identify common questions",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "What do people ask about",
+            "create_doc": true
+          },
+          {
+            "name": "Map influencers & active members",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Key people in community"
+          },
+          {
+            "name": "Note content that performs well",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "What gets engagement"
+          }
+        ]
+      },
+      {
+        "name": "Strategy & Action",
+        "duration": "Day 4",
+        "tasks": [
+          {
+            "name": "Create engagement strategy",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "How to provide value",
+            "create_doc": true
+          },
+          {
+            "name": "Identify outreach opportunities",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "DM targets, collaboration"
+          },
+          {
+            "name": "Content ideas for communities",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Posts that would resonate"
+          },
+          {
+            "name": "Build community lead list",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Extract potential leads"
+          }
+        ]
+      }
+    ]
+  },
+  "industry_insights": {
+    "name": "Industry Insights Report",
+    "description": "Comprehensive industry analysis",
+    "category": "research",
+    "auto_research": true,
+    "phases": [
+      {
+        "name": "Data Gathering",
+        "duration": "Days 1-2",
+        "tasks": [
+          {
+            "name": "Industry statistics research",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Market size, growth, forecasts",
+            "research": true
+          },
+          {
+            "name": "Trend analysis",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Current and emerging trends",
+            "research": true,
+            "research_queries": [
+              "[industry] trends 2024",
+              "[industry] future outlook",
+              "[industry] innovations"
+            ]
+          },
+          {
+            "name": "News & recent developments",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Latest industry news",
+            "research": true
+          },
+          {
+            "name": "Expert opinions & reports",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Analyst reports, thought leaders",
+            "research": true
+          }
+        ]
+      },
+      {
+        "name": "Analysis",
+        "duration": "Day 3",
+        "tasks": [
+          {
+            "name": "SWOT analysis",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Strengths, weaknesses, opportunities, threats",
+            "create_doc": true
+          },
+          {
+            "name": "Porter's Five Forces",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Competitive dynamics"
+          },
+          {
+            "name": "Key success factors",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "What it takes to win"
+          }
+        ]
+      },
+      {
+        "name": "Report Creation",
+        "duration": "Day 4",
+        "tasks": [
+          {
+            "name": "Create insights report",
+            "priority": 1,
+            "time_estimate": "3h",
+            "description": "Full report document",
+            "create_doc": true
+          },
+          {
+            "name": "Executive summary",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Key takeaways"
+          },
+          {
+            "name": "Visual data presentation",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Charts, graphs"
+          },
+          {
+            "name": "Actionable recommendations",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "What to do with insights"
+          }
+        ]
+      }
+    ]
+  },
+  "offer_creation": {
+    "name": "Offer Creation",
+    "description": "Create a compelling offer/service package",
+    "category": "business",
+    "phases": [
+      {
+        "name": "Research & Foundation",
+        "duration": "Days 1-2",
+        "tasks": [
+          {
+            "name": "Target audience definition",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Who is this for",
+            "create_doc": true
+          },
+          {
+            "name": "Pain point validation",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Confirm real problems",
+            "research": true
+          },
+          {
+            "name": "Competitor offer analysis",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "What others are selling",
+            "research": true
+          },
+          {
+            "name": "Pricing research",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Market rates, willingness to pay",
+            "research": true
+          }
+        ]
+      },
+      {
+        "name": "Offer Design",
+        "duration": "Days 3-4",
+        "tasks": [
+          {
+            "name": "Core offer definition",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "What you're selling"
+          },
+          {
+            "name": "Deliverables list",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Exactly what they get",
+            "create_doc": true
+          },
+          {
+            "name": "Timeline & milestones",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "How long it takes"
+          },
+          {
+            "name": "Pricing & packaging",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Price points, tiers"
+          },
+          {
+            "name": "Guarantee/risk reversal",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "De-risk for buyer"
+          },
+          {
+            "name": "Bonuses & add-ons",
+            "priority": 3,
+            "time_estimate": "30m",
+            "description": "Extra value"
+          }
+        ]
+      },
+      {
+        "name": "Messaging & Materials",
+        "duration": "Days 5-6",
+        "tasks": [
+          {
+            "name": "Value proposition",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Clear transformation statement"
+          },
+          {
+            "name": "Offer one-pager",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Sales document",
+            "create_doc": true
+          },
+          {
+            "name": "Objection handling",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Common concerns & responses",
+            "create_doc": true
+          },
+          {
+            "name": "Case study/proof elements",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Social proof"
+          },
+          {
+            "name": "Sales script/talking points",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "How to pitch it",
+            "create_doc": true
+          }
+        ]
+      },
+      {
+        "name": "Validation",
+        "duration": "Day 7",
+        "tasks": [
+          {
+            "name": "Internal review",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Team feedback"
+          },
+          {
+            "name": "Test with warm prospects",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Get real feedback"
+          },
+          {
+            "name": "Refine based on feedback",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Iterate"
+          },
+          {
+            "name": "Finalize offer",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Lock it in"
+          }
+        ]
+      }
+    ]
+  },
+  "persona_research": {
+    "name": "Persona Research",
+    "description": "Deep customer persona development",
+    "category": "research",
+    "auto_research": true,
+    "phases": [
+      {
+        "name": "Persona Foundation",
+        "duration": "Day 1",
+        "tasks": [
+          {
+            "name": "Define persona hypothesis",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Initial assumptions",
+            "create_doc": true
+          },
+          {
+            "name": "Demographics research",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Age, role, company size, location",
+            "research": true
+          },
+          {
+            "name": "Psychographics research",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Values, motivations, fears",
+            "research": true
+          }
+        ]
+      },
+      {
+        "name": "Pain & Aspiration Mapping",
+        "duration": "Day 2",
+        "tasks": [
+          {
+            "name": "Top pain points",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "What frustrates them daily",
+            "research": true,
+            "research_queries": [
+              "[persona] biggest challenges",
+              "[persona] daily frustrations",
+              "what keeps [persona] up at night"
+            ]
+          },
+          {
+            "name": "Goals & aspirations",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "What they want to achieve",
+            "research": true
+          },
+          {
+            "name": "Objections & hesitations",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Why they might not buy",
+            "research": true
+          },
+          {
+            "name": "Trigger events",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "What makes them look for solutions",
+            "research": true
+          }
+        ]
+      },
+      {
+        "name": "Behavior & Channels",
+        "duration": "Day 3",
+        "tasks": [
+          {
+            "name": "Information sources",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Where they learn",
+            "research": true,
+            "research_queries": [
+              "[persona] favorite podcasts",
+              "[persona] newsletters",
+              "[persona] thought leaders"
+            ]
+          },
+          {
+            "name": "Social platforms used",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "LinkedIn, Twitter, etc.",
+            "research": true
+          },
+          {
+            "name": "Communities & groups",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Where they network",
+            "research": true,
+            "research_queries": [
+              "[persona] communities",
+              "[persona] professional groups",
+              "[persona] associations"
+            ]
+          },
+          {
+            "name": "Buying process",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "How they make decisions",
+            "research": true
+          }
+        ]
+      },
+      {
+        "name": "Persona Documentation",
+        "duration": "Day 4",
+        "tasks": [
+          {
+            "name": "Create persona profile",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Full persona document",
+            "create_doc": true
+          },
+          {
+            "name": "Day-in-the-life narrative",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Typical day story"
+          },
+          {
+            "name": "Messaging guidelines",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "How to talk to them",
+            "create_doc": true
+          },
+          {
+            "name": "Content topics that resonate",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "What to write about"
+          }
+        ]
+      }
+    ]
+  },
+  "campaign_research": {
+    "name": "Campaign Research",
+    "description": "Full research for launching a campaign",
+    "category": "research",
+    "auto_research": true,
+    "phases": [
+      {
+        "name": "Target Research",
+        "duration": "Days 1-2",
+        "tasks": [
+          {
+            "name": "Define target industry",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Which industry to target",
+            "create_doc": true
+          },
+          {
+            "name": "Industry deep dive",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Industry overview, size, trends",
+            "research": true,
+            "research_queries": [
+              "[industry] market overview",
+              "[industry] size and growth",
+              "[industry] key trends 2024"
+            ]
+          },
+          {
+            "name": "Key players mapping",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Major companies in space",
+            "research": true
+          },
+          {
+            "name": "Target company profile",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Ideal company characteristics",
+            "create_doc": true
+          }
+        ]
+      },
+      {
+        "name": "Persona & Pain Points",
+        "duration": "Days 3-4",
+        "tasks": [
+          {
+            "name": "Decision maker research",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Who to target (title, role)",
+            "research": true
+          },
+          {
+            "name": "Pain point discovery",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Their biggest challenges",
+            "research": true,
+            "research_queries": [
+              "[industry] [role] challenges",
+              "[industry] pain points",
+              "what do [role] struggle with"
+            ]
+          },
+          {
+            "name": "Aspiration mapping",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "What they want to achieve",
+            "research": true
+          },
+          {
+            "name": "Objection anticipation",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Why they might say no",
+            "research": true
+          }
+        ]
+      },
+      {
+        "name": "Channel & Messaging",
+        "duration": "Days 5-6",
+        "tasks": [
+          {
+            "name": "Where they hang out",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Communities, platforms, events",
+            "research": true,
+            "research_queries": [
+              "[industry] communities",
+              "[role] LinkedIn groups",
+              "[industry] conferences",
+              "[industry] podcasts"
+            ]
+          },
+          {
+            "name": "Content they consume",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Newsletters, podcasts, influencers",
+            "research": true
+          },
+          {
+            "name": "Language analysis",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "How they talk about problems",
+            "research": true
+          },
+          {
+            "name": "Competitor messaging review",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "What competitors say",
+            "research": true
+          }
+        ]
+      },
+      {
+        "name": "Campaign Planning",
+        "duration": "Day 7",
+        "tasks": [
+          {
+            "name": "Compile research document",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "All findings in one doc",
+            "create_doc": true
+          },
+          {
+            "name": "ICP definition",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Ideal Customer Profile",
+            "create_doc": true
+          },
+          {
+            "name": "Messaging angles",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "3-5 angles to test",
+            "create_doc": true
+          },
+          {
+            "name": "Channel strategy",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Where to reach them"
+          },
+          {
+            "name": "Campaign brief",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Complete campaign plan",
+            "create_doc": true
+          }
+        ]
+      }
+    ]
+  },
+  "linkedin_campaign": {
+    "name": "LinkedIn Campaign",
+    "description": "LinkedIn outreach campaign via Heyreach",
+    "category": "marketing",
+    "phases": [
+      {
+        "name": "Research & Targeting",
+        "duration": "Days 1-2",
+        "tasks": [
+          {
+            "name": "Define ICP for LinkedIn",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Titles, industries, company size"
+          },
+          {
+            "name": "Research target persona",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Pain points, interests",
+            "research": true
+          },
+          {
+            "name": "Build Sales Navigator search",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Filter criteria"
+          },
+          {
+            "name": "Export/build lead list",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Get prospects into Heyreach"
+          }
+        ]
+      },
+      {
+        "name": "Content & Sequence",
+        "duration": "Days 3-4",
+        "tasks": [
+          {
+            "name": "Write connection request",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "300 char personalized request"
+          },
+          {
+            "name": "Write follow-up sequence",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "3-5 message sequence"
+          },
+          {
+            "name": "Create variants for A/B",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Test different angles"
+          },
+          {
+            "name": "Client approval",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Sign-off on messaging"
+          }
+        ]
+      },
+      {
+        "name": "Campaign Setup",
+        "duration": "Day 5",
+        "tasks": [
+          {
+            "name": "Set up Heyreach campaign",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Import leads, configure"
+          },
+          {
+            "name": "Configure sending limits",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Daily caps"
+          },
+          {
+            "name": "Set up inbox monitoring",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Reply tracking"
+          },
+          {
+            "name": "Test run",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Small batch test"
+          }
+        ]
+      },
+      {
+        "name": "Launch & Manage",
+        "duration": "Ongoing",
+        "tasks": [
+          {
+            "name": "Launch campaign",
+            "priority": 1,
+            "time_estimate": "15m",
+            "description": "Start sending"
+          },
+          {
+            "name": "Daily reply handling",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Respond to interested"
+          },
+          {
+            "name": "Weekly stats review",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Connection/reply rates"
+          },
+          {
+            "name": "Optimize based on data",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Adjust messaging"
+          }
+        ]
+      }
+    ]
+  },
+  "content_strategy": {
+    "name": "Content Strategy",
+    "description": "Develop content strategy for a client or niche",
+    "category": "marketing",
+    "phases": [
+      {
+        "name": "Research & Audit",
+        "duration": "Days 1-2",
+        "tasks": [
+          {
+            "name": "Audience research",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Who we're creating for",
+            "research": true
+          },
+          {
+            "name": "Competitor content audit",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "What's working for others",
+            "research": true
+          },
+          {
+            "name": "Current content audit",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "What exists already"
+          },
+          {
+            "name": "Keyword/topic research",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "What to write about",
+            "research": true
+          }
+        ]
+      },
+      {
+        "name": "Strategy Development",
+        "duration": "Days 3-4",
+        "tasks": [
+          {
+            "name": "Define content pillars",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Main topic categories",
+            "create_doc": true
+          },
+          {
+            "name": "Content types & formats",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Blog, video, social, etc."
+          },
+          {
+            "name": "Publishing cadence",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "How often"
+          },
+          {
+            "name": "Distribution channels",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Where to publish"
+          },
+          {
+            "name": "Success metrics",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "How to measure"
+          }
+        ]
+      },
+      {
+        "name": "Content Planning",
+        "duration": "Days 5-6",
+        "tasks": [
+          {
+            "name": "Create content calendar",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "30-90 day plan",
+            "create_doc": true
+          },
+          {
+            "name": "Write content briefs (5)",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "First 5 pieces"
+          },
+          {
+            "name": "Create templates",
+            "priority": 3,
+            "time_estimate": "1h",
+            "description": "Reusable formats"
+          },
+          {
+            "name": "Set up tracking",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Analytics"
+          }
+        ]
+      },
+      {
+        "name": "Handoff",
+        "duration": "Day 7",
+        "tasks": [
+          {
+            "name": "Create strategy document",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Complete strategy doc",
+            "create_doc": true
+          },
+          {
+            "name": "Present to stakeholders",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Review meeting"
+          },
+          {
+            "name": "Train on processes",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "How to execute"
+          },
+          {
+            "name": "Schedule review cadence",
+            "priority": 3,
+            "time_estimate": "15m",
+            "description": "Monthly check-ins"
+          }
+        ]
+      }
+    ]
+  },
+  "seo_audit": {
+    "name": "SEO Audit",
+    "description": "Technical and content SEO audit",
+    "category": "marketing",
+    "phases": [
+      {
+        "name": "Technical SEO",
+        "duration": "Day 1",
+        "tasks": [
+          {
+            "name": "Site crawl analysis",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Screaming Frog/Ahrefs crawl"
+          },
+          {
+            "name": "Page speed analysis",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Core Web Vitals"
+          },
+          {
+            "name": "Mobile usability check",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Mobile-friendliness"
+          },
+          {
+            "name": "Index coverage review",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Google Search Console"
+          },
+          {
+            "name": "Schema markup audit",
+            "priority": 3,
+            "time_estimate": "30m",
+            "description": "Structured data"
+          }
+        ]
+      },
+      {
+        "name": "On-Page SEO",
+        "duration": "Day 2",
+        "tasks": [
+          {
+            "name": "Title tag analysis",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "All page titles"
+          },
+          {
+            "name": "Meta description review",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "All meta descriptions"
+          },
+          {
+            "name": "Header structure audit",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "H1, H2 usage"
+          },
+          {
+            "name": "Internal linking analysis",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Link structure"
+          },
+          {
+            "name": "Image optimization check",
+            "priority": 3,
+            "time_estimate": "30m",
+            "description": "Alt tags, sizes"
+          }
+        ]
+      },
+      {
+        "name": "Content & Keywords",
+        "duration": "Day 3",
+        "tasks": [
+          {
+            "name": "Keyword gap analysis",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Missing opportunities",
+            "research": true
+          },
+          {
+            "name": "Content gap analysis",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Topics to cover"
+          },
+          {
+            "name": "Top page performance",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Best performing pages"
+          },
+          {
+            "name": "Competitor comparison",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "vs. competitors",
+            "research": true
+          }
+        ]
+      },
+      {
+        "name": "Report & Recommendations",
+        "duration": "Day 4",
+        "tasks": [
+          {
+            "name": "Prioritize issues",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Impact vs effort"
+          },
+          {
+            "name": "Create audit report",
+            "priority": 1,
+            "time_estimate": "3h",
+            "description": "Full findings doc",
+            "create_doc": true
+          },
+          {
+            "name": "Build action plan",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Prioritized fixes"
+          },
+          {
+            "name": "Present findings",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Review with client"
+          }
+        ]
+      }
+    ]
+  },
+  "sales_process_build": {
+    "name": "Sales Process Build",
+    "description": "Design and implement sales process",
+    "category": "business",
+    "phases": [
+      {
+        "name": "Discovery",
+        "duration": "Days 1-2",
+        "tasks": [
+          {
+            "name": "Current process audit",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "What exists today"
+          },
+          {
+            "name": "Sales team interviews",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Learn from frontline"
+          },
+          {
+            "name": "Pipeline analysis",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Current metrics"
+          },
+          {
+            "name": "Competitor process research",
+            "priority": 3,
+            "time_estimate": "1h",
+            "description": "How others do it",
+            "research": true
+          }
+        ]
+      },
+      {
+        "name": "Process Design",
+        "duration": "Days 3-4",
+        "tasks": [
+          {
+            "name": "Define sales stages",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Pipeline stages",
+            "create_doc": true
+          },
+          {
+            "name": "Exit criteria per stage",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "What moves deals forward"
+          },
+          {
+            "name": "Activity requirements",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Required actions per stage"
+          },
+          {
+            "name": "SLA definitions",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Response times"
+          },
+          {
+            "name": "Handoff procedures",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Between stages/teams"
+          }
+        ]
+      },
+      {
+        "name": "Tools & Templates",
+        "duration": "Days 5-6",
+        "tasks": [
+          {
+            "name": "CRM setup/configuration",
+            "priority": 1,
+            "time_estimate": "4h",
+            "description": "Pipeline in system"
+          },
+          {
+            "name": "Create email templates",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Stage-based templates",
+            "create_doc": true
+          },
+          {
+            "name": "Build call scripts",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Discovery, demo, close",
+            "create_doc": true
+          },
+          {
+            "name": "Create proposal template",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Standard proposal"
+          },
+          {
+            "name": "Set up reporting",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Dashboards"
+          }
+        ]
+      },
+      {
+        "name": "Rollout",
+        "duration": "Day 7",
+        "tasks": [
+          {
+            "name": "Create sales playbook",
+            "priority": 1,
+            "time_estimate": "3h",
+            "description": "Complete guide",
+            "create_doc": true
+          },
+          {
+            "name": "Train team",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Training session"
+          },
+          {
+            "name": "Pilot with subset",
+            "priority": 2,
+            "time_estimate": "ongoing",
+            "description": "Test before full rollout"
+          },
+          {
+            "name": "Gather feedback",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Iterate based on input"
+          }
+        ]
+      }
+    ]
+  },
+  "integration_build": {
+    "name": "Integration Build",
+    "description": "Build integration between two systems",
+    "category": "development",
+    "phases": [
+      {
+        "name": "Requirements & Design",
+        "duration": "Day 1",
+        "tasks": [
+          {
+            "name": "Document integration requirements",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "What needs to sync",
+            "create_doc": true
+          },
+          {
+            "name": "Research APIs",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Both system APIs",
+            "research": true
+          },
+          {
+            "name": "Map data fields",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Source to destination mapping",
+            "create_doc": true
+          },
+          {
+            "name": "Define sync logic",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Triggers, frequency, direction"
+          }
+        ]
+      },
+      {
+        "name": "Development",
+        "duration": "Days 2-3",
+        "tasks": [
+          {
+            "name": "Set up auth/credentials",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "API keys, OAuth"
+          },
+          {
+            "name": "Build connection layer",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "API clients"
+          },
+          {
+            "name": "Implement sync logic",
+            "priority": 1,
+            "time_estimate": "4h",
+            "description": "Core functionality"
+          },
+          {
+            "name": "Add error handling",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Retries, logging"
+          },
+          {
+            "name": "Build monitoring",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Success/failure tracking"
+          }
+        ]
+      },
+      {
+        "name": "Testing & Deploy",
+        "duration": "Day 4",
+        "tasks": [
+          {
+            "name": "Test with sample data",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Verify sync works"
+          },
+          {
+            "name": "Test edge cases",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Error scenarios"
+          },
+          {
+            "name": "Deploy integration",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Production deploy"
+          },
+          {
+            "name": "Monitor initial sync",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Watch first batch"
+          },
+          {
+            "name": "Document integration",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "How it works",
+            "create_doc": true
+          }
+        ]
+      }
+    ]
+  },
+  "meeting_prep": {
+    "name": "Meeting Preparation",
+    "description": "Prepare for an important meeting",
+    "category": "meetings",
+    "phases": [
+      {
+        "name": "Research",
+        "duration": "Day before",
+        "tasks": [
+          {
+            "name": "Research attendee(s)",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "LinkedIn, company",
+            "research": true
+          },
+          {
+            "name": "Research company",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Recent news, challenges",
+            "research": true
+          },
+          {
+            "name": "Review past interactions",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Email history, notes"
+          },
+          {
+            "name": "Prepare relevant materials",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Deck, docs, demos"
+          }
+        ]
+      },
+      {
+        "name": "Planning",
+        "duration": "Day before",
+        "tasks": [
+          {
+            "name": "Define meeting objective",
+            "priority": 1,
+            "time_estimate": "15m",
+            "description": "What's the goal"
+          },
+          {
+            "name": "Create agenda",
+            "priority": 1,
+            "time_estimate": "15m",
+            "description": "Topics to cover",
+            "create_doc": true
+          },
+          {
+            "name": "Prepare questions",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Discovery questions"
+          },
+          {
+            "name": "Anticipate objections",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Prepare responses"
+          }
+        ]
+      },
+      {
+        "name": "Post-Meeting",
+        "duration": "Same day",
+        "tasks": [
+          {
+            "name": "Send follow-up email",
+            "priority": 1,
+            "time_estimate": "15m",
+            "description": "Summary and next steps"
+          },
+          {
+            "name": "Update CRM",
+            "priority": 2,
+            "time_estimate": "10m",
+            "description": "Log meeting notes"
+          },
+          {
+            "name": "Create action items",
+            "priority": 1,
+            "time_estimate": "15m",
+            "description": "Tasks from meeting"
+          },
+          {
+            "name": "Schedule next meeting",
+            "priority": 2,
+            "time_estimate": "5m",
+            "description": "If applicable"
+          }
+        ]
+      }
+    ]
+  },
+  "sop_creation": {
+    "name": "SOP Creation",
+    "description": "Create a Standard Operating Procedure document",
+    "category": "documentation",
+    "phases": [
+      {
+        "name": "Research & Planning",
+        "duration": "Day 1",
+        "tasks": [
+          {
+            "name": "Define SOP scope and audience",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "What process, who will use it"
+          },
+          {
+            "name": "Interview subject matter experts",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Learn the process from those who do it"
+          },
+          {
+            "name": "Document current process steps",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Map out the workflow"
+          },
+          {
+            "name": "Identify decision points & exceptions",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Edge cases and branching logic"
+          }
+        ]
+      },
+      {
+        "name": "Writing",
+        "duration": "Day 2",
+        "tasks": [
+          {
+            "name": "Create SOP outline",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Structure the document",
+            "create_doc": true
+          },
+          {
+            "name": "Write step-by-step instructions",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Detailed procedural steps"
+          },
+          {
+            "name": "Add screenshots/visuals",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Visual aids"
+          },
+          {
+            "name": "Include troubleshooting section",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Common issues and fixes"
+          },
+          {
+            "name": "Add checklist summary",
+            "priority": 3,
+            "time_estimate": "15m",
+            "description": "Quick reference checklist"
+          }
+        ]
+      },
+      {
+        "name": "Review & Publish",
+        "duration": "Day 3",
+        "tasks": [
+          {
+            "name": "Internal review",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Team reviews for accuracy"
+          },
+          {
+            "name": "Test with new user",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Have someone follow it"
+          },
+          {
+            "name": "Incorporate feedback",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Make revisions"
+          },
+          {
+            "name": "Publish to knowledge base",
+            "priority": 1,
+            "time_estimate": "15m",
+            "description": "Add to Notion/Drive"
+          },
+          {
+            "name": "Notify relevant team members",
+            "priority": 2,
+            "time_estimate": "10m",
+            "description": "Share the new SOP"
+          }
+        ]
+      }
+    ]
+  },
+  "campaign_creation": {
+    "name": "Campaign Creation",
+    "description": "Full marketing/outreach campaign creation workflow",
+    "category": "marketing",
+    "auto_research": true,
+    "phases": [
+      {
+        "name": "Research & Strategy",
+        "duration": "Days 1-2",
+        "tasks": [
+          {
+            "name": "Define campaign objective",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "What are we trying to achieve",
+            "create_doc": true
+          },
+          {
+            "name": "Research target audience",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "ICP, persona, pain points",
+            "research": true
+          },
+          {
+            "name": "Competitive analysis",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "What competitors are doing",
+            "research": true
+          },
+          {
+            "name": "Define success metrics",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "KPIs and targets"
+          },
+          {
+            "name": "Select channels",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Email, LinkedIn, ads, etc."
+          },
+          {
+            "name": "Create campaign brief",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Full campaign plan",
+            "create_doc": true
+          }
+        ]
+      },
+      {
+        "name": "Asset Creation",
+        "duration": "Days 3-5",
+        "tasks": [
+          {
+            "name": "Develop messaging framework",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Key messages, value props",
+            "create_doc": true
+          },
+          {
+            "name": "Write email/ad copy",
+            "priority": 1,
+            "time_estimate": "3h",
+            "description": "All campaign copy"
+          },
+          {
+            "name": "Create landing page",
+            "priority": 2,
+            "time_estimate": "4h",
+            "description": "If needed"
+          },
+          {
+            "name": "Design creative assets",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Images, graphics"
+          },
+          {
+            "name": "Build lead list",
+            "priority": 1,
+            "time_estimate": "3h",
+            "description": "Target contacts"
+          },
+          {
+            "name": "Client approval on assets",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Sign-off"
+          }
+        ]
+      },
+      {
+        "name": "Setup & Launch",
+        "duration": "Days 6-7",
+        "tasks": [
+          {
+            "name": "Set up campaign in tools",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Instantly, Heyreach, etc."
+          },
+          {
+            "name": "Configure tracking",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "UTMs, pixels, analytics"
+          },
+          {
+            "name": "Test all components",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Send tests, check links"
+          },
+          {
+            "name": "Launch campaign",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Go live"
+          },
+          {
+            "name": "Set up monitoring dashboard",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Track performance"
+          }
+        ]
+      },
+      {
+        "name": "Monitor & Optimize",
+        "duration": "Ongoing",
+        "tasks": [
+          {
+            "name": "Daily performance check",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Monitor metrics"
+          },
+          {
+            "name": "Reply/lead handling",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Respond to interested"
+          },
+          {
+            "name": "Week 1 analysis",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Review performance"
+          },
+          {
+            "name": "Optimize based on data",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "A/B test, adjust"
+          },
+          {
+            "name": "Campaign wrap-up report",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Final results",
+            "create_doc": true
+          }
+        ]
+      }
+    ]
+  },
+  "competitor_analysis": {
+    "name": "Competitor Analysis",
+    "description": "Deep competitive research and analysis",
+    "category": "research",
+    "auto_research": true,
+    "phases": [
+      {
+        "name": "Competitor Identification",
+        "duration": "Day 1",
+        "tasks": [
+          {
+            "name": "List direct competitors",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Same product/service",
+            "research": true
+          },
+          {
+            "name": "List indirect competitors",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Alternative solutions",
+            "research": true
+          },
+          {
+            "name": "Prioritize top 5 to analyze",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Focus list",
+            "create_doc": true
+          }
+        ]
+      },
+      {
+        "name": "Deep Analysis",
+        "duration": "Days 2-3",
+        "tasks": [
+          {
+            "name": "Analyze pricing & packaging",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Pricing models",
+            "research": true
+          },
+          {
+            "name": "Feature comparison",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Feature matrix",
+            "create_doc": true
+          },
+          {
+            "name": "Messaging & positioning",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "How they position",
+            "research": true
+          },
+          {
+            "name": "Customer reviews analysis",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "G2, Capterra, Reddit",
+            "research": true
+          },
+          {
+            "name": "Sales process teardown",
+            "priority": 3,
+            "time_estimate": "1h",
+            "description": "Sign up, experience their sales"
+          }
+        ]
+      },
+      {
+        "name": "Synthesis",
+        "duration": "Day 4",
+        "tasks": [
+          {
+            "name": "Identify competitive gaps",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Where you can win"
+          },
+          {
+            "name": "SWOT analysis",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Strengths, weaknesses",
+            "create_doc": true
+          },
+          {
+            "name": "Create battle cards",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Sales enablement",
+            "create_doc": true
+          },
+          {
+            "name": "Recommendations",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Strategic recommendations"
+          }
+        ]
+      }
+    ]
+  },
+  "lead_generation": {
+    "name": "Lead Generation Setup",
+    "description": "Set up lead generation system",
+    "category": "marketing",
+    "phases": [
+      {
+        "name": "Strategy",
+        "duration": "Day 1",
+        "tasks": [
+          {
+            "name": "Define ICP",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Ideal customer profile",
+            "create_doc": true
+          },
+          {
+            "name": "Choose lead sources",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Apollo, LinkedIn, scraping, etc."
+          },
+          {
+            "name": "Define lead qualification criteria",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "MQL/SQL definitions"
+          },
+          {
+            "name": "Set up tracking",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Airtable, CRM fields"
+          }
+        ]
+      },
+      {
+        "name": "Build System",
+        "duration": "Days 2-3",
+        "tasks": [
+          {
+            "name": "Set up lead sources",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Configure tools"
+          },
+          {
+            "name": "Build enrichment workflow",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Email finder, data enrichment"
+          },
+          {
+            "name": "Set up verification",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Email verification"
+          },
+          {
+            "name": "Create lead scoring",
+            "priority": 3,
+            "time_estimate": "1h",
+            "description": "Scoring criteria"
+          },
+          {
+            "name": "Build automation",
+            "priority": 1,
+            "time_estimate": "3h",
+            "description": "n8n/Zapier workflow"
+          }
+        ]
+      },
+      {
+        "name": "Test & Launch",
+        "duration": "Day 4",
+        "tasks": [
+          {
+            "name": "Test full workflow",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "End-to-end test"
+          },
+          {
+            "name": "Pull initial batch",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "First 100 leads"
+          },
+          {
+            "name": "Verify quality",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Check lead quality"
+          },
+          {
+            "name": "Document process",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "SOP for ongoing",
+            "create_doc": true
+          },
+          {
+            "name": "Schedule regular runs",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Cron/schedule"
+          }
+        ]
+      }
+    ]
+  },
+  "client_offboarding": {
+    "name": "Client Offboarding",
+    "description": "Graceful client offboarding process",
+    "category": "client",
+    "phases": [
+      {
+        "name": "Notification & Planning",
+        "duration": "Week 1",
+        "tasks": [
+          {
+            "name": "Schedule offboarding call",
+            "priority": 1,
+            "time_estimate": "15m",
+            "description": "Book the meeting"
+          },
+          {
+            "name": "Conduct offboarding call",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Understand reasons, timeline"
+          },
+          {
+            "name": "Create transition plan",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "What needs to be transferred",
+            "create_doc": true
+          },
+          {
+            "name": "Document all deliverables",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "List everything built"
+          }
+        ]
+      },
+      {
+        "name": "Knowledge Transfer",
+        "duration": "Week 2",
+        "tasks": [
+          {
+            "name": "Finalize all documentation",
+            "priority": 1,
+            "time_estimate": "3h",
+            "description": "SOPs, guides, runbooks"
+          },
+          {
+            "name": "Transfer access/credentials",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Hand over logins"
+          },
+          {
+            "name": "Export all data",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Client gets their data"
+          },
+          {
+            "name": "Training on self-maintenance",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "How to manage without us"
+          }
+        ]
+      },
+      {
+        "name": "Wrap-up",
+        "duration": "Week 3",
+        "tasks": [
+          {
+            "name": "Final invoice",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Last payment"
+          },
+          {
+            "name": "Remove our access",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Revoke all credentials"
+          },
+          {
+            "name": "Request testimonial",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Ask for review"
+          },
+          {
+            "name": "Internal retrospective",
+            "priority": 3,
+            "time_estimate": "30m",
+            "description": "What did we learn"
+          },
+          {
+            "name": "Update CRM status",
+            "priority": 2,
+            "time_estimate": "10m",
+            "description": "Mark as churned"
+          }
+        ]
+      }
+    ]
+  },
+  "proposal_creation": {
+    "name": "Proposal Creation",
+    "description": "Create and send a client proposal",
+    "category": "sales",
+    "phases": [
+      {
+        "name": "Research & Prep",
+        "duration": "Day 1",
+        "tasks": [
+          {
+            "name": "Review discovery notes",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Understand their needs"
+          },
+          {
+            "name": "Research the company",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "News, context",
+            "research": true
+          },
+          {
+            "name": "Define scope of work",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "What we will deliver"
+          },
+          {
+            "name": "Determine pricing",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Quote the work"
+          }
+        ]
+      },
+      {
+        "name": "Writing",
+        "duration": "Day 2",
+        "tasks": [
+          {
+            "name": "Write executive summary",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "The hook"
+          },
+          {
+            "name": "Detail the solution",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "What we will do"
+          },
+          {
+            "name": "Add case studies/proof",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Social proof"
+          },
+          {
+            "name": "Build pricing section",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Investment breakdown"
+          },
+          {
+            "name": "Add timeline",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "When delivered"
+          },
+          {
+            "name": "Create in PandaDoc",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Build the doc",
+            "create_doc": true
+          }
+        ]
+      },
+      {
+        "name": "Review & Send",
+        "duration": "Day 3",
+        "tasks": [
+          {
+            "name": "Internal review",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Proofread, check"
+          },
+          {
+            "name": "Send proposal",
+            "priority": 1,
+            "time_estimate": "15m",
+            "description": "Email with context"
+          },
+          {
+            "name": "Schedule follow-up",
+            "priority": 2,
+            "time_estimate": "10m",
+            "description": "Set reminder"
+          },
+          {
+            "name": "Log in CRM",
+            "priority": 2,
+            "time_estimate": "10m",
+            "description": "Update deal stage"
+          }
+        ]
+      }
+    ]
+  },
+  "retainer_management": {
+    "name": "Monthly Retainer Management",
+    "description": "Monthly retainer client workflow",
+    "category": "client",
+    "phases": [
+      {
+        "name": "Month Start",
+        "duration": "Week 1",
+        "tasks": [
+          {
+            "name": "Review previous month",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "What was delivered"
+          },
+          {
+            "name": "Check hours usage",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Hours remaining"
+          },
+          {
+            "name": "Priority call with client",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "This month priorities"
+          },
+          {
+            "name": "Create monthly task list",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Plan the work"
+          }
+        ]
+      },
+      {
+        "name": "Execution",
+        "duration": "Weeks 2-3",
+        "tasks": [
+          {
+            "name": "Execute priority tasks",
+            "priority": 1,
+            "time_estimate": "varies",
+            "description": "Main deliverables"
+          },
+          {
+            "name": "Mid-month check-in",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Quick sync"
+          },
+          {
+            "name": "Track time accurately",
+            "priority": 2,
+            "time_estimate": "ongoing",
+            "description": "Log all hours"
+          },
+          {
+            "name": "Document all work",
+            "priority": 3,
+            "time_estimate": "ongoing",
+            "description": "Keep records"
+          }
+        ]
+      },
+      {
+        "name": "Month End",
+        "duration": "Week 4",
+        "tasks": [
+          {
+            "name": "Create monthly report",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Summary of work done",
+            "create_doc": true
+          },
+          {
+            "name": "Send invoice",
+            "priority": 1,
+            "time_estimate": "15m",
+            "description": "Bill the client"
+          },
+          {
+            "name": "Month-end call",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Review and next month"
+          },
+          {
+            "name": "Rollover unused hours",
+            "priority": 3,
+            "time_estimate": "10m",
+            "description": "If applicable"
+          }
+        ]
+      }
+    ]
+  },
+  "workshop_delivery": {
+    "name": "Workshop/Training Delivery",
+    "description": "Deliver a workshop or training session",
+    "category": "client",
+    "phases": [
+      {
+        "name": "Preparation",
+        "duration": "Week before",
+        "tasks": [
+          {
+            "name": "Define learning objectives",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "What they will learn"
+          },
+          {
+            "name": "Create agenda",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Session structure",
+            "create_doc": true
+          },
+          {
+            "name": "Build presentation",
+            "priority": 1,
+            "time_estimate": "4h",
+            "description": "Slides, materials"
+          },
+          {
+            "name": "Create exercises/activities",
+            "priority": 2,
+            "time_estimate": "2h",
+            "description": "Hands-on components"
+          },
+          {
+            "name": "Send pre-work to attendees",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "If applicable"
+          },
+          {
+            "name": "Test all tech",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Zoom, slides, etc."
+          }
+        ]
+      },
+      {
+        "name": "Delivery",
+        "duration": "Workshop day",
+        "tasks": [
+          {
+            "name": "Setup 30 min early",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Test everything"
+          },
+          {
+            "name": "Deliver workshop",
+            "priority": 1,
+            "time_estimate": "varies",
+            "description": "The main event"
+          },
+          {
+            "name": "Record session",
+            "priority": 2,
+            "time_estimate": "0m",
+            "description": "Hit record"
+          },
+          {
+            "name": "Collect feedback",
+            "priority": 2,
+            "time_estimate": "10m",
+            "description": "Quick survey"
+          }
+        ]
+      },
+      {
+        "name": "Follow-up",
+        "duration": "Day after",
+        "tasks": [
+          {
+            "name": "Send recording & materials",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Share resources"
+          },
+          {
+            "name": "Send thank you note",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Appreciation email"
+          },
+          {
+            "name": "Review feedback",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "What to improve"
+          },
+          {
+            "name": "Update materials based on feedback",
+            "priority": 3,
+            "time_estimate": "1h",
+            "description": "Iterate"
+          }
+        ]
+      }
+    ]
+  },
+  "case_study_creation": {
+    "name": "Case Study Creation",
+    "description": "Create a client case study",
+    "category": "marketing",
+    "phases": [
+      {
+        "name": "Research & Interview",
+        "duration": "Days 1-2",
+        "tasks": [
+          {
+            "name": "Select client for case study",
+            "priority": 1,
+            "time_estimate": "15m",
+            "description": "Good results, willing"
+          },
+          {
+            "name": "Get client approval",
+            "priority": 1,
+            "time_estimate": "15m",
+            "description": "Permission to feature"
+          },
+          {
+            "name": "Gather project data",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Metrics, timeline, deliverables"
+          },
+          {
+            "name": "Conduct interview",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Get their perspective"
+          },
+          {
+            "name": "Collect visuals",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Screenshots, photos"
+          }
+        ]
+      },
+      {
+        "name": "Writing",
+        "duration": "Day 3",
+        "tasks": [
+          {
+            "name": "Write challenge section",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "The problem"
+          },
+          {
+            "name": "Write solution section",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "What we did"
+          },
+          {
+            "name": "Write results section",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "The outcomes"
+          },
+          {
+            "name": "Add client quotes",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Testimonial"
+          },
+          {
+            "name": "Create visuals/graphics",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Before/after, charts"
+          }
+        ]
+      },
+      {
+        "name": "Review & Publish",
+        "duration": "Day 4",
+        "tasks": [
+          {
+            "name": "Client review",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Get approval"
+          },
+          {
+            "name": "Make revisions",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Incorporate feedback"
+          },
+          {
+            "name": "Design final version",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Pretty PDF/page"
+          },
+          {
+            "name": "Publish to website",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Live case study"
+          },
+          {
+            "name": "Share on social",
+            "priority": 3,
+            "time_estimate": "15m",
+            "description": "Promote it"
+          }
+        ]
+      }
+    ]
+  },
+  "webinar_creation": {
+    "name": "Webinar Creation",
+    "description": "Plan and execute a webinar",
+    "category": "marketing",
+    "phases": [
+      {
+        "name": "Planning",
+        "duration": "Week 1",
+        "tasks": [
+          {
+            "name": "Define topic & angle",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "What value will attendees get"
+          },
+          {
+            "name": "Set date & time",
+            "priority": 1,
+            "time_estimate": "15m",
+            "description": "Schedule it"
+          },
+          {
+            "name": "Create registration page",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Landing page"
+          },
+          {
+            "name": "Write promo emails",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Email sequence"
+          },
+          {
+            "name": "Create social posts",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Promotion content"
+          }
+        ]
+      },
+      {
+        "name": "Content Creation",
+        "duration": "Week 2",
+        "tasks": [
+          {
+            "name": "Create outline",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Session structure"
+          },
+          {
+            "name": "Build presentation",
+            "priority": 1,
+            "time_estimate": "4h",
+            "description": "Slides"
+          },
+          {
+            "name": "Create handouts/resources",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Downloads"
+          },
+          {
+            "name": "Prepare Q&A answers",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Anticipated questions"
+          },
+          {
+            "name": "Practice run",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Rehearse"
+          }
+        ]
+      },
+      {
+        "name": "Promotion",
+        "duration": "Weeks 1-3",
+        "tasks": [
+          {
+            "name": "Send email invites",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "To list"
+          },
+          {
+            "name": "Post on social media",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "LinkedIn, Twitter"
+          },
+          {
+            "name": "Send reminder emails",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "1 day, 1 hour before"
+          },
+          {
+            "name": "Personal outreach to VIPs",
+            "priority": 3,
+            "time_estimate": "30m",
+            "description": "High-value invites"
+          }
+        ]
+      },
+      {
+        "name": "Delivery & Follow-up",
+        "duration": "Webinar day + after",
+        "tasks": [
+          {
+            "name": "Test tech 30 min early",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Verify setup"
+          },
+          {
+            "name": "Deliver webinar",
+            "priority": 1,
+            "time_estimate": "varies",
+            "description": "Go live"
+          },
+          {
+            "name": "Send replay + resources",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Day after"
+          },
+          {
+            "name": "Follow up with attendees",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Next step emails"
+          },
+          {
+            "name": "Analyze performance",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Registrations, attendance, engagement"
+          }
+        ]
+      }
+    ]
+  },
+  "pricing_strategy": {
+    "name": "Pricing Strategy",
+    "description": "Develop or revise pricing strategy",
+    "category": "business",
+    "phases": [
+      {
+        "name": "Research",
+        "duration": "Days 1-2",
+        "tasks": [
+          {
+            "name": "Analyze current pricing",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "What we charge now"
+          },
+          {
+            "name": "Competitor pricing research",
+            "priority": 1,
+            "time_estimate": "2h",
+            "description": "Market rates",
+            "research": true
+          },
+          {
+            "name": "Customer willingness to pay",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Survey or interviews"
+          },
+          {
+            "name": "Cost analysis",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "What it costs us"
+          }
+        ]
+      },
+      {
+        "name": "Strategy Development",
+        "duration": "Day 3",
+        "tasks": [
+          {
+            "name": "Define pricing model",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Hourly, project, retainer, value"
+          },
+          {
+            "name": "Create pricing tiers",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Good, better, best"
+          },
+          {
+            "name": "Build pricing calculator",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Internal tool"
+          },
+          {
+            "name": "Define discount policy",
+            "priority": 3,
+            "time_estimate": "30m",
+            "description": "When/how to discount"
+          },
+          {
+            "name": "Create pricing document",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Final pricing",
+            "create_doc": true
+          }
+        ]
+      },
+      {
+        "name": "Implementation",
+        "duration": "Day 4",
+        "tasks": [
+          {
+            "name": "Update website pricing",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "If public"
+          },
+          {
+            "name": "Update sales materials",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Proposals, decks"
+          },
+          {
+            "name": "Train team on new pricing",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Everyone aligned"
+          },
+          {
+            "name": "Grandfather existing clients",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "If applicable"
+          }
+        ]
+      }
+    ]
+  },
+  "quarterly_planning": {
+    "name": "Quarterly Planning",
+    "description": "Quarterly business planning session",
+    "category": "business",
+    "phases": [
+      {
+        "name": "Review",
+        "duration": "Day 1",
+        "tasks": [
+          {
+            "name": "Review last quarter goals",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "What we set out to do"
+          },
+          {
+            "name": "Analyze results vs goals",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Did we hit them"
+          },
+          {
+            "name": "Financial review",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Revenue, expenses, profit"
+          },
+          {
+            "name": "Client portfolio review",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Who we worked with"
+          },
+          {
+            "name": "Team capacity review",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Utilization, bandwidth"
+          }
+        ]
+      },
+      {
+        "name": "Planning",
+        "duration": "Day 2",
+        "tasks": [
+          {
+            "name": "Set quarterly revenue goal",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Target number"
+          },
+          {
+            "name": "Define 3-5 key initiatives",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Big rocks"
+          },
+          {
+            "name": "Break into monthly milestones",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Month by month"
+          },
+          {
+            "name": "Assign owners",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "Who does what"
+          },
+          {
+            "name": "Identify risks",
+            "priority": 2,
+            "time_estimate": "30m",
+            "description": "What could go wrong"
+          }
+        ]
+      },
+      {
+        "name": "Documentation",
+        "duration": "Day 3",
+        "tasks": [
+          {
+            "name": "Create quarterly plan doc",
+            "priority": 1,
+            "time_estimate": "1h",
+            "description": "Written plan",
+            "create_doc": true
+          },
+          {
+            "name": "Set up tracking dashboard",
+            "priority": 2,
+            "time_estimate": "1h",
+            "description": "Monitor progress"
+          },
+          {
+            "name": "Schedule weekly check-ins",
+            "priority": 2,
+            "time_estimate": "15m",
+            "description": "Accountability"
+          },
+          {
+            "name": "Share with team",
+            "priority": 1,
+            "time_estimate": "30m",
+            "description": "Align everyone"
+          }
+        ]
+      }
+    ]
+  }
+}

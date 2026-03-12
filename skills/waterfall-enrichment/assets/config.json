@@ -1,0 +1,41 @@
+{
+  "batch_size": 100,
+  "batch_delay": 2,
+  "request_timeout": 30,
+  "max_retries": 3,
+  "initial_retry_delay": 1,
+  "finders": [
+    {"name": "tomba", "enabled": true, "cost_per_search": 0.01, "min_delay": 3, "timeout": 30},
+    {"name": "muraena", "enabled": true, "cost_per_search": 0.02, "min_delay": 3, "timeout": 30},
+    {"name": "icypeas", "enabled": true, "cost_per_search": 0.01, "min_delay": 1, "timeout": 30},
+    {"name": "voilanorbert", "enabled": true, "cost_per_search": 0.03, "min_delay": 2, "timeout": 30},
+    {"name": "nimbler", "enabled": true, "cost_per_search": 0.08, "min_delay": 3, "timeout": 30},
+    {"name": "anymailfinder", "enabled": true, "cost_per_search": 0.05, "min_delay": 5, "timeout": 120},
+    {"name": "findymail", "enabled": true, "cost_per_search": 0.02, "min_delay": 2, "timeout": 30}
+  ],
+  "verifiers": {
+    "reoon": {"enabled": true, "cost_per_verify": 0.003, "mode": "power", "min_delay": 0.5, "timeout": 30},
+    "emailverify": {"enabled": true, "cost_per_verify": 0.003, "min_delay": 1, "timeout": 30}
+  },
+  "cost_limits": {
+    "max_per_lead": 0.50,
+    "max_per_batch": 500.00,
+    "max_monthly": 2000.00,
+    "warn_at_percent": 80
+  },
+  "precheck": {
+    "mx_check": true,
+    "skip_personal_domains": true,
+    "deduplicate": true
+  },
+  "personal_domains": [
+    "gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "aol.com",
+    "icloud.com", "mail.com", "protonmail.com", "zoho.com", "yandex.com",
+    "live.com", "msn.com", "me.com", "inbox.com", "gmx.com"
+  ],
+  "output": {
+    "format": "csv",
+    "include_raw": false,
+    "include_alternatives": false
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "campaign_id": "abc123xyz",
+  "name": "Q1 2025 Outreach",
+  "date_range": {
+    "start": "2025-01-01",
+    "end": "2025-01-31"
+  },
+  "metrics": {
+    "emails_sent": 1250,
+    "delivered": 1180,
+    "opened": 472,
+    "clicked": 94,
+    "replied": 47,
+    "bounced": 70,
+    "unsubscribed": 12,
+    "open_rate": 40.0,
+    "click_rate": 7.97,
+    "reply_rate": 3.98,
+    "bounce_rate": 5.6
+  },
+  "engagement": {
+    "positive_replies": 32,
+    "neutral_replies": 10,
+    "negative_replies": 5,
+    "sentiment_score": 0.68
+  },
+  "conversion": {
+    "meetings_booked": 18,
+    "deals_created": 12,
+    "revenue": 48000,
+    "conversion_rate": 1.44
+  },
+  "leads": {
+    "total": 1500,
+    "contacted": 1250,
+    "active": 850,
+    "completed": 400
+  }
+}

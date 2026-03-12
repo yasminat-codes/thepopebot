@@ -1,0 +1,108 @@
+{
+  "_comment": "Retell LLM Configuration Template — all fields with defaults and documentation",
+  "_usage": "Replace {{PLACEHOLDERS}} with actual values. Remove _comment fields before submission to API.",
+
+  "model": "gpt-4o",
+  "_comment_model": "LLM model to use. Options: 'gpt-4o', 'gpt-4o-mini', 'gpt-4-turbo', 'gpt-3.5-turbo', 'claude-3.5-sonnet', 'claude-3-haiku', 'claude-3-sonnet', 'claude-3-opus'. Default: 'gpt-4o'.",
+
+  "general_prompt": "{{SYSTEM_PROMPT}}",
+  "_comment_general_prompt": "The system-level prompt that defines the agent's persona, instructions, guardrails, and behavior. This is the main prompt used when no states are defined, or as the fallback prompt across all states.",
+
+  "general_tools": [],
+  "_comment_general_tools": "Array of tools available across all states. Tool types: 'end_call' (terminate call), 'transfer_call' (transfer to number), 'check_availability_cal' (Cal.com integration), 'book_appointment_cal' (Cal.com booking), 'press_digit' (DTMF), 'custom' (webhook-based). Example: [{\"type\": \"end_call\", \"name\": \"end_call\", \"description\": \"End the call when conversation is complete.\"}]",
+
+  "states": [],
+  "_comment_states": "Array of conversation states for multi-step flows. Each state: {name, state_prompt, transitions: [{transition_name, description, destination}], tools: [...]}. Leave empty for a single-prompt agent.",
+
+  "starting_state": "",
+  "_comment_starting_state": "Name of the initial state when using states. Must match a state name in the states array. Leave empty if not using states.",
+
+  "begin_message": "{{GREETING_MESSAGE}}",
+  "_comment_begin_message": "The first message the agent speaks when the call starts. Set to null or empty string for the agent to wait for the caller to speak first (useful for inbound calls).",
+
+  "inbound_dynamic_variables_webhook_url": "",
+  "_comment_inbound_dynamic_variables_webhook_url": "URL called when an inbound call arrives to fetch dynamic variables (e.g., caller name from CRM). The webhook receives {from_number, to_number} and must return a JSON object of key-value pairs.",
+
+  "model_temperature": 0.7,
+  "_comment_model_temperature": "Controls LLM response randomness. Range: 0.0 (deterministic) to 1.0 (creative). Lower values for factual tasks, higher for conversational. Default: 0.7.",
+
+  "tool_call_strict_mode": true,
+  "_comment_tool_call_strict_mode": "If true, the LLM will strictly follow tool schemas and not hallucinate tool parameters. Default: true.",
+
+  "last_modification_timestamp": null,
+  "_comment_last_modification_timestamp": "Read-only. Unix timestamp of the last modification. Set by the API.",
+
+  "_example_state_flow": {
+    "_comment": "Example multi-state configuration for reference (do not include in API call)",
+    "states": [
+      {
+        "name": "greeting",
+        "state_prompt": "Greet the caller warmly and ask how you can help.",
+        "transitions": [
+          {
+            "transition_name": "caller_needs_help",
+            "description": "Caller states their reason for calling.",
+            "destination": "handle_request"
+          }
+        ]
+      },
+      {
+        "name": "handle_request",
+        "state_prompt": "Help the caller with their request. Gather necessary information.",
+        "transitions": [
+          {
+            "transition_name": "request_complete",
+            "description": "The request has been handled.",
+            "destination": "closing"
+          }
+        ]
+      },
+      {
+        "name": "closing",
+        "state_prompt": "Confirm everything is resolved. Thank the caller and end the call.",
+        "transitions": []
+      }
+    ],
+    "starting_state": "greeting"
+  },
+
+  "_example_tools": [
+    {
+      "_comment": "End call tool",
+      "type": "end_call",
+      "name": "end_call",
+      "description": "End the call when the conversation is complete."
+    },
+    {
+      "_comment": "Transfer call tool",
+      "type": "transfer_call",
+      "name": "transfer_to_support",
+      "description": "Transfer the caller to a human support agent.",
+      "number": "+14155559999"
+    },
+    {
+      "_comment": "Custom webhook tool",
+      "type": "custom",
+      "name": "lookup_account",
+      "description": "Look up the caller's account by email or phone number.",
+      "url": "https://api.example.com/lookup",
+      "speak_during_execution": true,
+      "speak_after_execution": true,
+      "execution_message_description": "Let me look that up for you...",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Caller's email address"
+          },
+          "phone": {
+            "type": "string",
+            "description": "Caller's phone number"
+          }
+        },
+        "required": ["email"]
+      }
+    }
+  ]
+}

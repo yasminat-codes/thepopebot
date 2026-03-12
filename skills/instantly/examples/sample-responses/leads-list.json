@@ -1,0 +1,44 @@
+{
+  "leads": [
+    {
+      "email": "john@example.com",
+      "first_name": "John",
+      "last_name": "Doe",
+      "company_name": "Acme Corp",
+      "status": "active",
+      "campaign_id": "abc123xyz",
+      "added_at": "2025-01-10T14:30:00Z",
+      "last_contacted": "2025-01-11T09:15:00Z",
+      "opened": true,
+      "clicked": false,
+      "replied": false,
+      "variables": {
+        "role": "CTO",
+        "industry": "SaaS",
+        "company_size": "50-200"
+      }
+    },
+    {
+      "email": "jane@startup.io",
+      "first_name": "Jane",
+      "last_name": "Smith",
+      "company_name": "StartupXYZ",
+      "status": "replied",
+      "campaign_id": "abc123xyz",
+      "added_at": "2025-01-09T11:20:00Z",
+      "last_contacted": "2025-01-10T08:45:00Z",
+      "opened": true,
+      "clicked": true,
+      "replied": true,
+      "reply_sentiment": "positive",
+      "variables": {
+        "role": "CEO",
+        "industry": "FinTech",
+        "funding": "Series A"
+      }
+    }
+  ],
+  "total": 2,
+  "limit": 100,
+  "skip": 0
+}

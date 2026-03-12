@@ -1,0 +1,286 @@
+# Pipeline Contract Reference
+
+This file defines the input/output contracts for task-master's position in the pipeline:
+
+```
+plan-architect  →  task-master  →  specs-to-commit
+```
+
+---
+
+## Section 1: Input Contract (from plan-architect)
+
+### Expected folder structure (plan-architect v1.2.0 output)
+
+```
+plans/{system}/
+├── PLAN.md              # Index with metadata, nav links, and summary
+├── 02-database.md       # Database tables, migration steps, schema decisions
+├── 03-implementation.md # Implementation phases, ordered list of work items
+├── 04-testing.md        # Testing strategy, coverage targets, live API requirements
+├── 05-deployment.md     # Deployment steps, environment variable checklist
+└── 06-risks.md          # Risk register with mitigations
+```
+
+task-master reads all files in the folder. It is not required to read them in order,
+but `03-implementation.md` is always the primary source for extracting tasks.
+
+### Fallback: older plan-architect or manually written plans
+
+```
+plan/
+└── {feature-name}.md    # Single-file plan
+```
+
+Also accepted:
+
+```
+plans/
+└── {feature-name}.md    # Flat plans directory, one file per feature
+```
+
+### Validation before proceeding
+
+task-master MUST verify all three conditions before generating any task files:
+
+1. At least one `.md` file exists in `plan/` or `plans/` (recursively)
+2. At least one file contains an implementation section — identifiable by a heading
+   matching: `## Implementation`, `## Phases`, `## Work Items`, `## Steps`, or a numbered list
+3. The plan has meaningful content (combined line count > 50 lines across all files)
+
+If any condition fails, task-master warns and (where possible) proceeds:
+
+| Condition failed | Behavior                                                                                              |
+|------------------|-------------------------------------------------------------------------------------------------------|
+| No plan files    | **Warn:** "No plan/ or plans/ directory found. You can still pass a direct file path: `/task-master path/to/any-plan.md`. Or run /plan-architect first to generate a structured plan." |
+| No impl section  | **Warn + proceed:** "No ## Implementation heading found. task-master will treat all sections as implementation candidates. Review the preview table carefully before confirming." |
+| Plan too short   | **Warn:** "Plan is short (<50 lines). Verify the plan is complete — proceeding anyway." |
+
+---
+
+## Section 2: Output Contract (for specs-to-commit)
+
+### Directory structure produced
+
+```
+tasks/
+├── TASK-LOG.md              # Task registry — specs-to-commit reads this for execution order
+└── _pending/
+    ├── 001-{title}.md       # First task (no dependencies, execute first)
+    ├── 002-{title}.md       # Second task
+    ├── 003-{title}.md       # Third task
+    └── NNN-{title}.md       # Nth task
+```
+
+### Numbering convention
+
+- Three-digit zero-padded integers: `001`, `002`, `003`, ..., `099`, `100`
+- Numbers represent dependency-safe execution order, not arbitrary sequence
+- If two tasks have no dependency relationship, they may share adjacent numbers but
+  the one with simpler prerequisites gets the lower number
+- Gap tasks are allowed (e.g., `001`, `002`, `010`) if the gap leaves room for
+  future tasks to be inserted without renumbering
+
+### Fields that specs-to-commit parses
+
+specs-to-commit reads these exact fields from each task file. task-master MUST include
+all of them, formatted exactly as shown:
+
+| Field                        | Format                                 | Purpose                                |
+|------------------------------|----------------------------------------|----------------------------------------|
+| `**BlockedBy:**`             | `[001, 002]` or `—` if none           | Execution order enforcement            |
+| `## Success Criteria`        | Bullet list of verifiable conditions   | Completion check before marking done   |
+| `## Files to Create or Modify` | Labeled list (see CONTEXT-INJECTION.md) | Diff targets after implementation     |
+| `## Testing`                 | Full section (see TESTING-STANDARDS.md) | Commands to run after implementation  |
+| `## Definition of Done`      | Checklist with checkboxes              | Final gate before moving to completed |
+
+### Task file header format
+
+Every task file must open with this exact header block:
+
+```markdown
+# Task NNN: {Short Title}
+
+**Status:** pending
+**BlockedBy:** [NNN, NNN]  ← or — if no dependencies
+**Blocks:** [NNN, NNN]     ← or — if nothing depends on this
+**Plan source:** plans/{system}/03-implementation.md § {Section heading}
+**Live API:** Yes ({SERVICE_API_KEY}) | No
+**Est. context:** small | medium | large
+```
+
+---
+
+## Section 3: TASK-LOG.md Format
+
+task-master writes `tasks/TASK-LOG.md` as the last step of every generation run.
+specs-to-commit reads this file to determine which tasks to execute and in what order.
+
+```markdown
+# Task Log — {system-name}
+
+**Generated by:** task-master v1.0.0
+**Plan source:** plans/{system}/PLAN.md
+**Generated on:** {ISO date, e.g., 2026-03-02}
+**Total tasks:** {N}
+
+## Task Registry
+
+| #   | Title                        | Plan Section     | Depends On | Live API?              | Est. Context |
+|-----|------------------------------|-----------------|------------|------------------------|--------------|
+| 001 | {short title}                | Phase 1          | —          | No                     | small        |
+| 002 | {short title}                | Phase 2          | 001        | Yes (OPENROUTER_API_KEY) | medium     |
+| 003 | {short title}                | Phase 2          | 001        | No                     | small        |
+| 004 | {short title}                | Phase 3          | 002, 003   | No                     | large        |
+
+## Execution Order
+
+Start with tasks that have no `BlockedBy` entries (shown as `—` in the table above).
+Do not start task N until all tasks listed in its `Depends On` column are complete.
+
+Parallel execution is safe for tasks that do not depend on each other
+(e.g., tasks 002 and 003 above can run simultaneously after 001 completes).
+
+## Notes
+
+{Any generation-time warnings, e.g., "Task 004 is large — consider splitting if context exceeds 80k tokens"}
+```
+
+---
+
+## Section 4: Pipeline Invocation Order
+
+The three tools in the pipeline must be invoked in sequence. They do not run in parallel.
+
+```
+Step 1 → /plan-architect
+         Produces: plans/{system}/
+
+Step 2 → /task-master plans/{system}
+         Reads:    plans/{system}/
+         Produces: tasks/_pending/  +  tasks/TASK-LOG.md
+
+Step 3 → /specs-to-commit
+         Reads:    tasks/TASK-LOG.md  +  tasks/_pending/
+         Executes: each task in dependency order
+         Produces: implemented code, passing tests, committed to git
+```
+
+### Guard: /plan-architect has not run yet
+
+If task-master is invoked and no `plan/` or `plans/` directory exists, warn and offer alternatives:
+
+```
+Warning: No plan/ or plans/ directory found.
+
+You can still pass a direct file path:
+  /task-master path/to/any-plan.md
+
+Or run /plan-architect first to generate a structured plan, then re-run:
+  /task-master plans/{system-name}
+```
+
+Do not attempt to generate tasks from memory or from project structure alone — a plan file
+(even an ad-hoc one) is required as input.
+
+### Guard: tasks/_pending/ already has files
+
+If `tasks/_pending/` already contains `.md` files, task-master MUST pause and ask:
+
+```
+tasks/_pending/ already contains {N} task files.
+
+Options:
+  1. Append   — add new tasks after the existing highest number
+  2. Overwrite — delete existing tasks and regenerate from plan
+  3. Cancel   — exit without changes
+
+Which option? (1/2/3):
+```
+
+Default behavior if running non-interactively: Cancel (option 3). Never silently overwrite.
+
+### Guard: TASK-LOG.md already exists
+
+If `tasks/TASK-LOG.md` exists and the user chose Append (option 1):
+- Add new rows to the Task Registry table
+- Update the Total tasks count
+- Append a new section under `## Notes` with the append timestamp and source plan
+
+If the user chose Overwrite (option 2):
+- Rewrite TASK-LOG.md from scratch
+- Delete all existing files in `tasks/_pending/` before writing new ones
+
+---
+
+## Section 5: Parallel Agent Deployment
+
+**ORCHESTRATOR BOUNDARY:** task-master dispatches agents and monitors filesystem state.
+It does NOT write application code, modify source files, run application tests, or
+implement any task on behalf of an agent. If an agent fails, task-master reports it
+to the user and asks what to do — it does not step in and implement itself.
+
+After Phase 5 validate-tasks.sh exits 0, task-master deploys one agent per task file
+using **wave execution** — tasks without dependencies fire immediately, then blocked
+tasks fire as their dependencies complete.
+
+### Agent prompt template
+
+Each agent receives this prompt (fill `{NNN}`, `{slug}` from filename):
+
+```
+You are implementing task {NNN}: {slug}.
+
+1. Read tasks/_pending/{NNN}-{slug}.md completely before writing any code.
+2. Read every file listed under "## Files to Read Before Starting".
+3. Read every rule listed under "## Relevant Rules".
+4. Move the task file to _in-progress:
+   mv tasks/_pending/{NNN}-{slug}.md tasks/_in-progress/{NNN}-{slug}.md
+5. Work through the Implementation Checklist top-to-bottom.
+   Verify each item's Success criterion before checking it off.
+6. When all checklist items are verified, run the full test suite:
+   uv run pytest tests/ -v --tb=short
+   If tests fail, fix the code. Do not proceed until exit 0.
+7. Move the task file to _completed:
+   mv tasks/_in-progress/{NNN}-{slug}.md tasks/_completed/{NNN}-{slug}.md
+8. Report completion: "Task {NNN} complete. All {N} success criteria verified."
+```
+
+### Wave execution algorithm
+
+```
+Build dependency graph from TASK-LOG.md BlockedBy fields.
+
+wave_0 = [tasks where BlockedBy == "—"]
+Dispatch wave_0: all in ONE message, run_in_background: true
+
+for each wave N (N >= 1):
+    Wait for all wave N-1 agents to report completion
+    wave_N = [tasks whose entire BlockedBy list is now in _completed/]
+    If wave_N is empty and pending tasks remain → report stuck + ask user
+    Dispatch wave_N: all in ONE message, run_in_background: true
+
+Continue until all tasks in _completed/
+```
+
+### Agent configuration
+
+```
+Task(
+    subagent_type: "general-purpose",
+    model: "sonnet",
+    run_in_background: true,
+    prompt: [agent prompt template above, filled per task]
+)
+```
+
+### Failure handling
+
+- Agent reports failure (tests don't pass) → do NOT dispatch dependents
+- Halt that wave → report failed task to user → ask: retry / skip / cancel
+- Retried tasks run alone (not batched) to avoid re-triggering dependents prematurely
+
+### Wave completion check
+
+After each wave, confirm by Glob `tasks/_completed/` — count must match expected completions.
+Do not proceed to next wave based on agent messages alone; verify the filesystem.

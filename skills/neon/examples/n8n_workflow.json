@@ -1,0 +1,316 @@
+{
+  "name": "Neon Database Automation",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "neon-webhook"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM posts WHERE user_id = $1 AND is_published = true ORDER BY created_at DESC LIMIT 10",
+        "additionalFields": {
+          "queryParameters": "={{ $json.body.user_id }}"
+        }
+      },
+      "name": "Query Neon (Direct SQL)",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 1,
+      "position": [450, 200],
+      "credentials": {
+        "postgres": {
+          "id": "neon-db",
+          "name": "Neon PostgreSQL"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.NEON_DATA_API_URL }}/posts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "user_id",
+              "value": "={{ 'eq.' + $json.body.user_id }}"
+            },
+            {
+              "name": "is_published",
+              "value": "eq.true"
+            },
+            {
+              "name": "order",
+              "value": "created_at.desc"
+            },
+            {
+              "name": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "name": "Query Neon (Data API)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [450, 400],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "neon-data-api-jwt",
+          "name": "Neon Data API JWT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "insert",
+        "table": "posts",
+        "columns": "title,content,user_id,is_published",
+        "additionalFields": {
+          "returnFields": "id,created_at"
+        }
+      },
+      "name": "Insert Post (Direct SQL)",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 1,
+      "position": [650, 200],
+      "credentials": {
+        "postgres": {
+          "id": "neon-db",
+          "name": "Neon PostgreSQL"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.NEON_DATA_API_URL }}/posts",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "title",
+              "value": "={{ $json.body.title }}"
+            },
+            {
+              "name": "content",
+              "value": "={{ $json.body.content }}"
+            },
+            {
+              "name": "is_published",
+              "value": "={{ $json.body.is_published }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": false,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "name": "Insert Post (Data API)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [650, 400],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "neon-data-api-jwt",
+          "name": "Neon Data API JWT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://console.neon.tech/api/v2/projects/{{ $env.NEON_PROJECT_ID }}/branches",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"branch\": {\n    \"name\": \"{{ $json.body.branch_name }}\",\n    \"parent_id\": \"{{ $json.body.parent_branch_id }}\"\n  },\n  \"endpoints\": [\n    {\n      \"type\": \"read_write\"\n    }\n  ]\n}"
+      },
+      "name": "Create Neon Branch",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [850, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "neon-management-api",
+          "name": "Neon Management API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://console.neon.tech/api/v2/projects/{{ $env.NEON_PROJECT_ID }}/branches/{{ $json.branch.id }}",
+        "method": "DELETE",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      },
+      "name": "Delete Neon Branch",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [1050, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "neon-management-api",
+          "name": "Neon Management API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "=INSERT INTO post_views (post_id, user_id, ip_address, user_agent)\nVALUES ($1, $2, $3, $4)",
+        "additionalFields": {
+          "queryParameters": "={{ $json.post_id }},{{ $json.user_id }},{{ $json.ip }},{{ $json.user_agent }}"
+        }
+      },
+      "name": "Track Post View",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 1,
+      "position": [450, 600],
+      "credentials": {
+        "postgres": {
+          "id": "neon-db",
+          "name": "Neon PostgreSQL"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT refresh_post_statistics()"
+      },
+      "name": "Refresh Statistics",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 1,
+      "position": [650, 600],
+      "credentials": {
+        "postgres": {
+          "id": "neon-db",
+          "name": "Neon PostgreSQL"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 1
+            }
+          ]
+        }
+      },
+      "name": "Schedule (Hourly)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [250, 600]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Query Neon (Direct SQL)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Query Neon (Data API)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Query Neon (Direct SQL)": {
+      "main": [
+        [
+          {
+            "node": "Insert Post (Direct SQL)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Query Neon (Data API)": {
+      "main": [
+        [
+          {
+            "node": "Insert Post (Data API)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert Post (Direct SQL)": {
+      "main": [
+        [
+          {
+            "node": "Create Neon Branch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Neon Branch": {
+      "main": [
+        [
+          {
+            "node": "Delete Neon Branch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule (Hourly)": {
+      "main": [
+        [
+          {
+            "node": "Refresh Statistics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2026-02-23T19:00:00.000Z",
+      "updatedAt": "2026-02-23T19:00:00.000Z",
+      "id": "1",
+      "name": "neon"
+    },
+    {
+      "createdAt": "2026-02-23T19:00:00.000Z",
+      "updatedAt": "2026-02-23T19:00:00.000Z",
+      "id": "2",
+      "name": "database"
+    }
+  ],
+  "pinData": {},
+  "versionId": "1"
+}

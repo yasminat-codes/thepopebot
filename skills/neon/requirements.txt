@@ -1,0 +1,26 @@
+# Neon PostgreSQL Skill - Python Dependencies
+
+# PostgreSQL adapter (required for direct SQL)
+psycopg2-binary>=2.9.9
+
+# HTTP client (required for API calls)
+requests>=2.31.0
+
+# Optional: Data API JavaScript SDK (via pyodide or separate Node.js environment)
+# @neondatabase/neon-js
+# @neondatabase/postgrest-js
+
+# Optional: Web frameworks (uncomment if needed)
+# fastapi>=0.109.0
+# flask>=3.0.0
+
+# Optional: Background workers (uncomment if needed)
+# celery>=5.3.4
+# redis>=5.0.1
+
+# Optional: Data processing (uncomment if needed)
+# pandas>=2.1.4
+# numpy>=1.26.2
+
+# Optional: Type hints (uncomment if needed)
+# typing-extensions>=4.9.0

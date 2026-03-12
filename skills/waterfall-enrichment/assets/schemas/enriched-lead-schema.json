@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Enriched Lead Output Schema",
+  "description": "Schema for enriched lead output from waterfall enrichment pipeline",
+  "type": "object",
+  "required": ["first_name", "last_name", "domain", "status"],
+  "properties": {
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "description": "Found email address (empty if not found)"
+    },
+    "confidence": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Final confidence score: 90-100 verified, 70-85 catchall-verified, 50-69 risky, 0 not found/invalid"
+    },
+    "finder_source": {
+      "type": "string",
+      "enum": ["tomba", "muraena", "icypeas", "voilanorbert", "nimbler", "anymailfinder", "findymail", ""],
+      "description": "Which finder found the email"
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": ["valid", "invalid", "catchall", "unknown", "error", ""],
+      "description": "Reoon verification result"
+    },
+    "catch_all": {
+      "type": "boolean",
+      "description": "Whether Reoon flagged domain as catch-all"
+    },
+    "ev_status": {
+      "type": "string",
+      "enum": ["valid", "risky", "invalid", "unknown", "skipped", ""],
+      "description": "Email Verify result (only for catchall emails)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["verified", "catchall_verified", "risky", "invalid", "not_found", "invalid_input", "skipped_personal", "verifier_error"],
+      "description": "Final enrichment status"
+    },
+    "enriched_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of enrichment"
+    }
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://retellai.com/schemas/agent-response.json",
+  "title": "Retell Create Agent Response",
+  "description": "JSON Schema for the response returned by the Retell Create Agent (POST /create-agent) and Get Agent (GET /get-agent/:agent_id) endpoints.",
+  "type": "object",
+  "required": ["agent_id"],
+  "properties": {
+    "agent_id": {
+      "type": "string",
+      "description": "Unique identifier for the agent. Format: agent_XXXXX.",
+      "pattern": "^agent_"
+    },
+    "agent_name": {
+      "type": ["string", "null"],
+      "description": "Human-readable name for the agent."
+    },
+    "response_engine": {
+      "type": "object",
+      "description": "The response engine configuration powering the agent.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Engine type.",
+          "enum": ["retell-llm", "custom-llm"]
+        },
+        "llm_id": {
+          "type": "string",
+          "description": "Retell LLM ID. Present when type is retell-llm."
+        },
+        "url": {
+          "type": "string",
+          "description": "Custom LLM WebSocket URL. Present when type is custom-llm."
+        }
+      },
+      "required": ["type"]
+    },
+    "voice_id": {
+      "type": "string",
+      "description": "Voice ID from the selected provider (ElevenLabs, OpenAI, Deepgram, Cartesia, PlayHT)."
+    },
+    "voice_temperature": {
+      "type": "number",
+      "description": "Voice expressiveness level.",
+      "minimum": 0,
+      "maximum": 2,
+      "default": 1.0
+    },
+    "voice_speed": {
+      "type": "number",
+      "description": "Speech rate multiplier.",
+      "minimum": 0.5,
+      "maximum": 2.0,
+      "default": 1.0
+    },
+    "language": {
+      "type": "string",
+      "description": "Language code for the agent.",
+      "enum": [
+        "en-US", "en-GB", "en-AU", "en-IN", "en-NZ",
+        "es-ES", "es-419",
+        "fr-FR", "fr-CA",
+        "de-DE",
+        "it-IT",
+        "pt-BR", "pt-PT",
+        "ja-JP",
+        "ko-KR",
+        "zh-CN",
+        "nl-NL",
+        "pl-PL",
+        "ru-RU",
+        "sv-SE",
+        "tr-TR",
+        "vi-VN",
+        "multi"
+      ],
+      "default": "en-US"
+    },
+    "responsiveness": {
+      "type": "number",
+      "description": "How quickly the agent responds after the user stops speaking.",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1.0
+    },
+    "interruption_sensitivity": {
+      "type": "number",
+      "description": "How easily the agent can be interrupted by the user.",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1.0
+    },
+    "enable_backchannel": {
+      "type": "boolean",
+      "description": "Whether the agent produces backchannel cues while the user speaks.",
+      "default": true
+    },
+    "backchannel_frequency": {
+      "type": "number",
+      "description": "How often backchannel cues are produced.",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0.8
+    },
+    "backchannel_words": {
+      "type": "array",
+      "description": "Words and phrases used as backchannel cues.",
+      "items": {
+        "type": "string"
+      },
+      "default": ["yeah", "uh-huh", "right", "I see"]
+    },
+    "ambient_sound": {
+      "type": "string",
+      "description": "Background ambient sound played during the call.",
+      "enum": ["off", "office", "coffee-shop", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"],
+      "default": "off"
+    },
+    "ambient_sound_volume": {
+      "type": "number",
+      "description": "Volume of the ambient sound.",
+      "minimum": 0,
+      "maximum": 2,
+      "default": 1.0
+    },
+    "denoising_mode": {
+      "type": "string",
+      "description": "Audio denoising level for the user's microphone.",
+      "enum": ["off", "low", "high"],
+      "default": "off"
+    },
+    "end_call_after_silence_ms": {
+      "type": "integer",
+      "description": "Milliseconds of silence before auto-ending the call.",
+      "minimum": 10000,
+      "maximum": 600000,
+      "default": 30000
+    },
+    "max_call_duration_ms": {
+      "type": "integer",
+      "description": "Maximum call duration in milliseconds.",
+      "minimum": 60000,
+      "maximum": 3600000,
+      "default": 1800000
+    },
+    "opt_out_sensitive_data_storage": {
+      "type": "boolean",
+      "description": "Whether to opt out of storing call transcripts and recordings.",
+      "default": false
+    },
+    "post_call_analysis_data": {
+      "type": ["array", "null"],
+      "description": "Fields to extract from call transcripts after the call ends.",
+      "items": {
+        "type": "object",
+        "required": ["name", "type", "description"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Field name (used as the key in the analysis output)."
+          },
+          "type": {
+            "type": "string",
+            "description": "Data type of the field.",
+            "enum": ["string", "boolean", "enum"]
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of what information to extract."
+          },
+          "choices": {
+            "type": "array",
+            "description": "Allowed values when type is enum.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "webhook_url": {
+      "type": ["string", "null"],
+      "description": "URL for receiving real-time webhook events.",
+      "format": "uri"
+    },
+    "pronunciation_dictionary": {
+      "type": ["array", "null"],
+      "description": "Custom pronunciation entries for the agent.",
+      "items": {
+        "type": "object",
+        "required": ["word", "alphabet", "phoneme"],
+        "properties": {
+          "word": {
+            "type": "string",
+            "description": "The word or phrase to apply custom pronunciation to."
+          },
+          "alphabet": {
+            "type": "string",
+            "description": "Phonetic alphabet used.",
+            "enum": ["ipa", "cmu"]
+          },
+          "phoneme": {
+            "type": "string",
+            "description": "Phonetic transcription of the word."
+          }
+        }
+      }
+    },
+    "normalize_for_speech": {
+      "type": "boolean",
+      "description": "Whether to normalize text for speech synthesis.",
+      "default": true
+    },
+    "enable_voicemail_detection": {
+      "type": "boolean",
+      "description": "Whether voicemail detection is enabled.",
+      "default": false
+    },
+    "voicemail_message": {
+      "type": ["string", "null"],
+      "description": "Message to leave if voicemail is detected."
+    },
+    "voicemail_detection_timeout_ms": {
+      "type": "integer",
+      "description": "Milliseconds to wait for voicemail detection.",
+      "default": 30000
+    },
+    "reminder_trigger_ms": {
+      "type": "integer",
+      "description": "Milliseconds of user silence before sending a reminder.",
+      "default": 10000
+    },
+    "reminder_max_count": {
+      "type": "integer",
+      "description": "Maximum number of reminder prompts.",
+      "default": 2
+    },
+    "last_modification_timestamp": {
+      "type": "integer",
+      "description": "Unix timestamp of the last modification."
+    }
+  },
+  "additionalProperties": true
+}

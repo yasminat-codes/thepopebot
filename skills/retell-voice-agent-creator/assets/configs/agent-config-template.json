@@ -1,0 +1,110 @@
+{
+  "_comment": "Retell Agent Configuration Template — all fields with defaults and documentation",
+  "_usage": "Replace {{PLACEHOLDERS}} with actual values. Remove _comment fields before submission to API.",
+
+  "agent_name": "{{AGENT_NAME}}",
+  "_comment_agent_name": "Human-readable name for the agent. Displayed in the Retell dashboard.",
+
+  "response_engine": {
+    "type": "retell-llm",
+    "llm_id": "{{LLM_ID}}",
+    "_comment": "type: 'retell-llm' uses Retell-hosted LLM. llm_id: the ID returned from create-retell-llm."
+  },
+
+  "voice_id": "{{VOICE_ID}}",
+  "_comment_voice_id": "Voice ID from list-voices. Providers: elevenlabs, openai, deepgram, cartesia, playht.",
+
+  "voice_temperature": 1.0,
+  "_comment_voice_temperature": "Controls voice expressiveness. Range: 0.0 (monotone) to 2.0 (very expressive). Default: 1.0.",
+
+  "voice_speed": 1.0,
+  "_comment_voice_speed": "Speech rate multiplier. Range: 0.5 (half speed) to 2.0 (double speed). Default: 1.0.",
+
+  "language": "en-US",
+  "_comment_language": "Language code. Supported: en-US, en-GB, en-AU, en-IN, es-ES, es-419, fr-FR, de-DE, it-IT, pt-BR, pt-PT, ja-JP, ko-KR, zh-CN, nl-NL, pl-PL, ru-RU, sv-SE, tr-TR, vi-VN, and more. Default: en-US.",
+
+  "responsiveness": 1.0,
+  "_comment_responsiveness": "How quickly the agent responds after user stops speaking. Range: 0.0 (slow, waits longer) to 1.0 (fast, responds immediately). Lower values reduce false interruptions but add latency. Default: 1.0.",
+
+  "interruption_sensitivity": 1.0,
+  "_comment_interruption_sensitivity": "How easily the agent can be interrupted. Range: 0.0 (hard to interrupt) to 1.0 (very easy to interrupt). Default: 1.0.",
+
+  "enable_backchannel": true,
+  "_comment_enable_backchannel": "Whether the agent produces backchannel cues (e.g., 'yeah', 'mm-hmm') while user speaks. Default: true.",
+
+  "backchannel_frequency": 0.8,
+  "_comment_backchannel_frequency": "How often backchannel cues appear. Range: 0.0 (rare) to 1.0 (frequent). Only used when enable_backchannel is true. Default: 0.8.",
+
+  "backchannel_words": ["yeah", "uh-huh", "right", "I see", "mm-hmm", "got it"],
+  "_comment_backchannel_words": "Array of words/phrases the agent uses as backchannel cues. Customize per persona.",
+
+  "ambient_sound": "office",
+  "_comment_ambient_sound": "Background ambient sound. Options: 'off', 'office', 'coffee-shop', 'summer-outdoor', 'mountain-outdoor', 'static-noise', 'call-center'. Default: 'off'.",
+
+  "ambient_sound_volume": 1.0,
+  "_comment_ambient_sound_volume": "Volume of ambient sound. Range: 0.0 (silent) to 2.0 (loud). Default: 1.0.",
+
+  "denoising_mode": "low",
+  "_comment_denoising_mode": "Audio denoising level applied to user's microphone. Options: 'off', 'low', 'high'. 'high' may clip speech. Default: 'off'.",
+
+  "end_call_after_silence_ms": 30000,
+  "_comment_end_call_after_silence_ms": "Milliseconds of silence before the call auto-ends. Range: 10000-600000. Default: 30000 (30 seconds).",
+
+  "max_call_duration_ms": 1800000,
+  "_comment_max_call_duration_ms": "Maximum call length in milliseconds. Default: 1800000 (30 minutes). Max: 3600000 (60 minutes).",
+
+  "opt_out_sensitive_data_storage": false,
+  "_comment_opt_out_sensitive_data_storage": "If true, Retell will not store call transcripts or recordings. For HIPAA/compliance use cases. Default: false.",
+
+  "post_call_analysis_data": [
+    {
+      "name": "caller_name",
+      "type": "string",
+      "description": "Full name of the caller if provided"
+    },
+    {
+      "name": "call_reason",
+      "type": "string",
+      "description": "Primary reason for the call"
+    },
+    {
+      "name": "sentiment",
+      "type": "enum",
+      "description": "Overall caller sentiment",
+      "choices": ["positive", "neutral", "negative"]
+    },
+    {
+      "name": "follow_up_required",
+      "type": "boolean",
+      "description": "Whether a follow-up action is needed"
+    }
+  ],
+  "_comment_post_call_analysis_data": "Array of fields to extract from the call transcript after the call ends. Types: 'string', 'boolean', 'enum'. 'enum' requires a 'choices' array.",
+
+  "webhook_url": "",
+  "_comment_webhook_url": "URL to receive real-time webhook events (call started, ended, analyzed). Leave empty to disable.",
+
+  "pronunciation_dictionary": [],
+  "_comment_pronunciation_dictionary": "Array of custom pronunciations. Each entry: {word, alphabet, phoneme}. alphabet: 'ipa' or 'cmu'. Example: {\"word\": \"Retell\", \"alphabet\": \"ipa\", \"phoneme\": \"ɹɪˈtɛl\"}.",
+
+  "normalize_for_speech": true,
+  "_comment_normalize_for_speech": "Whether to normalize text for speech (e.g., convert '$100' to 'one hundred dollars'). Default: true.",
+
+  "enable_voicemail_detection": false,
+  "_comment_enable_voicemail_detection": "If true, the agent will detect voicemail and can leave a message or hang up. Default: false.",
+
+  "voicemail_message": "",
+  "_comment_voicemail_message": "Message the agent will leave if voicemail is detected. Only used when enable_voicemail_detection is true.",
+
+  "voicemail_detection_timeout_ms": 30000,
+  "_comment_voicemail_detection_timeout_ms": "Milliseconds to wait for voicemail detection before assuming a live person. Default: 30000.",
+
+  "reminder_trigger_ms": 10000,
+  "_comment_reminder_trigger_ms": "Milliseconds of user silence before agent sends a reminder prompt. Default: 10000 (10 seconds).",
+
+  "reminder_max_count": 2,
+  "_comment_reminder_max_count": "Maximum number of reminder prompts before the agent stops prompting. Default: 2.",
+
+  "last_modification_timestamp": null,
+  "_comment_last_modification_timestamp": "Read-only. Unix timestamp of the last modification. Set by the API."
+}

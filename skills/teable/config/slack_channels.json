@@ -1,0 +1,31 @@
+{
+  "agents": {
+    "amira": {"name": "Amira", "role": "Personal Assistant", "channel": "#amira-personal-assistant", "channel_id": "C0AF4HR9SJX"},
+    "rashid": {"name": "Rashid", "role": "Business Strategist", "channel": "#rashid-business-strategist", "channel_id": "C0AFF5HL876"},
+    "fatima": {"name": "Fatima", "role": "Finance Manager", "channel": "#fatima-finance-manager", "channel_id": "C0AFF5X6HM2"},
+    "layla": {"name": "Layla", "role": "Sales Lead", "channel": "#layla-sales-lead", "channel_id": "C0AFF5N6KSQ"},
+    "salma": {"name": "Salma", "role": "Outreach Specialist", "channel": "#salma-outreach-specialist", "channel_id": "C0AF9FDEH6J"},
+    "qamar": {"name": "Qamar", "role": "Cold Email Specialist", "channel": "#qamar-cold-email-specialist", "channel_id": "C0AGFUBL0RX"},
+    "najat": {"name": "Najat", "role": "LinkedIn Specialist", "channel": "#najat-linkedin-specialist", "channel_id": "C0AJA1NCW94"},
+    "tariq": {"name": "Tariq", "role": "Research Analyst", "channel": "#tariq-research-analyst", "channel_id": "C0AG5RNTYGY"},
+    "yusuf": {"name": "Yusuf", "role": "Project Manager", "channel": "#yusuf-project-manager", "channel_id": "C0AFBHE00JE"},
+    "idris": {"name": "Idris", "role": "Lead Developer", "channel": "#idris-lead-developer", "channel_id": "C0AF9FLFBL6"},
+    "zahra": {"name": "Zahra", "role": "Systems Architect", "channel": "#zahra-systems-architect", "channel_id": "C0AEW3Z7G31"},
+    "mariam": {"name": "Mariam", "role": "Client Success", "channel": "#mariam-client-success", "channel_id": "C0AF84R2NE9"},
+    "rafi": {"name": "Rafi", "role": "Tech Support", "channel": "#rafi-tech-support", "channel_id": "C0AK6BK6CBA"},
+    "hana": {"name": "Hana", "role": "Content Specialist", "channel": "#hana-content-specialist", "channel_id": "C0AF55YUG1H"},
+    "aisha": {"name": "Aisha", "role": "Wellness Coach", "channel": "#aisha-wellness-coach", "channel_id": "C0AFQF5HKHP"},
+    "hamza": {"name": "Hamza", "role": "DevOps Engineer", "channel": "#hamza-devops", "channel_id": ""}
+  },
+  "yasmine": {"name": "Yasmine", "channel": "#amira-personal-assistant", "channel_id": "C0AF4HR9SJX"},
+  "departments": {
+    "operations": {"channel": "#operations-department", "channel_id": "C0AJFML23JQ"},
+    "revenue": {"channel": "#revenue-operations-department", "channel_id": "C0AG5NY1MCY"},
+    "delivery": {"channel": "#project-delivery-department", "channel_id": "C0AF9CVHVCN"},
+    "content": {"channel": "#content-marketing-department", "channel_id": "C0AEW1N5P47"},
+    "lead_gen": {"channel": "#lead-generation-department", "channel_id": "C0AFBDK9JHY"},
+    "finance": {"channel": "#finance-operations-department", "channel_id": "C0AF9D2L2UW"},
+    "client_success": {"channel": "#client-success-department", "channel_id": "C0AEW0A77NK"},
+    "sales": {"channel": "#sales-and-business-development", "channel_id": "C0AFN1731GU"}
+  }
+}

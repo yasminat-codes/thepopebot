@@ -1,0 +1,194 @@
+{
+  "components": {
+    "schemas": {
+      "PublicBlog": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "type": { "type": "string" },
+          "picture": { "type": "string", "format": "uri" }
+        }
+      },
+      "InstagramPost": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "caption": { "type": "string" },
+          "mediaType": { "type": "string", "enum": ["IMAGE", "VIDEO", "CAROUSEL"] },
+          "mediaUrl": { "type": "string", "format": "uri" },
+          "thumbnailUrl": { "type": "string", "format": "uri" },
+          "timestamp": { "type": "integer" },
+          "likes": { "type": "integer" },
+          "comments": { "type": "integer" },
+          "saves": { "type": "integer" },
+          "reach": { "type": "integer" },
+          "impressions": { "type": "integer" },
+          "engagement": { "type": "number" },
+          "videoViews": { "type": "integer" }
+        }
+      },
+      "InstagramReel": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "caption": { "type": "string" },
+          "mediaUrl": { "type": "string", "format": "uri" },
+          "thumbnailUrl": { "type": "string", "format": "uri" },
+          "timestamp": { "type": "integer" },
+          "plays": { "type": "integer" },
+          "likes": { "type": "integer" },
+          "comments": { "type": "integer" },
+          "saves": { "type": "integer" },
+          "shares": { "type": "integer" },
+          "reach": { "type": "integer" }
+        }
+      },
+      "InstagramStory": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "mediaType": { "type": "string", "enum": ["IMAGE", "VIDEO"] },
+          "mediaUrl": { "type": "string", "format": "uri" },
+          "timestamp": { "type": "integer" },
+          "impressions": { "type": "integer" },
+          "reach": { "type": "integer" },
+          "exits": { "type": "integer" },
+          "replies": { "type": "integer" },
+          "tapsForward": { "type": "integer" },
+          "tapsBack": { "type": "integer" }
+        }
+      },
+      "FacebookPost": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "message": { "type": "string" },
+          "type": { "type": "string" },
+          "mediaUrl": { "type": "string", "format": "uri" },
+          "timestamp": { "type": "integer" },
+          "likes": { "type": "integer" },
+          "comments": { "type": "integer" },
+          "shares": { "type": "integer" },
+          "reach": { "type": "integer" },
+          "impressions": { "type": "integer" },
+          "videoViews": { "type": "integer" }
+        }
+      },
+      "TikTokVideo": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "caption": { "type": "string" },
+          "videoUrl": { "type": "string", "format": "uri" },
+          "thumbnailUrl": { "type": "string", "format": "uri" },
+          "timestamp": { "type": "integer" },
+          "views": { "type": "integer" },
+          "likes": { "type": "integer" },
+          "comments": { "type": "integer" },
+          "shares": { "type": "integer" },
+          "forYouViews": { "type": "integer" }
+        }
+      },
+      "YouTubeVideo": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "videoUrl": { "type": "string", "format": "uri" },
+          "thumbnailUrl": { "type": "string", "format": "uri" },
+          "publishedAt": { "type": "integer" },
+          "views": { "type": "integer" },
+          "likes": { "type": "integer" },
+          "dislikes": { "type": "integer" },
+          "comments": { "type": "integer" },
+          "watchTime": { "type": "number" },
+          "subscribers": { "type": "integer" },
+          "estimatedRevenue": { "type": "number" }
+        }
+      },
+      "AdCampaign": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "status": { "type": "string", "enum": ["active", "paused", "completed"] },
+          "budget": { "type": "number" },
+          "spent": { "type": "number" },
+          "impressions": { "type": "integer" },
+          "clicks": { "type": "integer" },
+          "conversions": { "type": "integer" },
+          "ctr": { "type": "number" },
+          "cpc": { "type": "number" },
+          "cpm": { "type": "number" },
+          "roas": { "type": "number" }
+        }
+      },
+      "GmbReview": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "reviewId": { "type": "string" },
+          "reviewer": {
+            "type": "object",
+            "properties": {
+              "profilePhotoUrl": { "type": "string", "format": "uri" },
+              "displayName": { "type": "string" }
+            }
+          },
+          "starRating": { "type": "string", "enum": ["ONE", "TWO", "THREE", "FOUR", "FIVE"] },
+          "comment": { "type": "string" },
+          "createTime": { "type": "string", "format": "date-time" },
+          "updateTime": { "type": "string", "format": "date-time" },
+          "reply": {
+            "type": "object",
+            "properties": {
+              "comment": { "type": "string" },
+              "updateTime": { "type": "string", "format": "date-time" }
+            }
+          }
+        }
+      },
+      "RealTimeStats": {
+        "type": "object",
+        "properties": {
+          "pageViews": { "type": "integer" },
+          "visits": { "type": "integer" },
+          "visitors": { "type": "integer" },
+          "timestamp": { "type": "integer" }
+        }
+      },
+      "Demographics": {
+        "type": "object",
+        "properties": {
+          "male": { "type": "number" },
+          "female": { "type": "number" },
+          "unknown": { "type": "number" }
+        }
+      },
+      "AgeDistribution": {
+        "type": "object",
+        "properties": {
+          "13-17": { "type": "number" },
+          "18-24": { "type": "number" },
+          "25-34": { "type": "number" },
+          "35-44": { "type": "number" },
+          "45-54": { "type": "number" },
+          "55-64": { "type": "number" },
+          "65+": { "type": "number" }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": { "type": "string" },
+          "message": { "type": "string" },
+          "details": { "type": "object" },
+          "requestId": { "type": "string" },
+          "timestamp": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

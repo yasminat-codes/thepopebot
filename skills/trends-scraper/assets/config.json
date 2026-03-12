@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "defaults": {
+    "timeframe": "today 1-m",
+    "geo": ["US", "GB"],
+    "batch_size": 5,
+    "sleep_between_batches": 2,
+    "sleep_geo_pass": 1,
+    "sleep_on_429": 60,
+    "niche_relevance_threshold": 0.5,
+    "keyword_max_cap": 40,
+    "apify_timeout": 600,
+    "apify_poll_interval": 15,
+    "gpt_model": "gpt-4o",
+    "gpt_temperature": 0.3
+  },
+  "apify": {
+    "actor_id": "epctex/google-trends-scraper"
+  }
+}
