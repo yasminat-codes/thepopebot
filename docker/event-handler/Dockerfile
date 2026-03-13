@@ -8,9 +8,18 @@ RUN apt-get update && \
 WORKDIR /app
 COPY package.json package-lock.json* ./
 RUN npm install --omit=dev && \
-    npm install --no-save thepopebot@$(node -p "require('./package.json').version")
+    npm install --no-save thepopebot@$(node -p "require('./package.json').version") && \
+    npm install --no-save tailwindcss @tailwindcss/postcss
 
-# ── Stage 2: runtime ─────────────────────────────────────────────
+# ── Stage 2: Next.js build ───────────────────────────────────────
+FROM node:22-bookworm-slim AS nextjs
+WORKDIR /app
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+COPY web/ ./
+RUN ./node_modules/.bin/next build
+
+# ── Stage 3: runtime ─────────────────────────────────────────────
 FROM node:22-bookworm-slim
 
 RUN apt-get update && \
@@ -30,6 +39,8 @@ RUN npm install -g pm2
 WORKDIR /app
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
+COPY --from=nextjs /app/.next ./.next
+COPY web/server.js web/next.config.mjs web/instrumentation.js web/middleware.js web/postcss.config.mjs ./
 
 EXPOSE 80
 CMD ["pm2-runtime", "--kill-timeout", "120000", "server.js"]

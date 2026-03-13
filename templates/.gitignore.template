@@ -17,12 +17,6 @@ skills/*/node_modules/
 # Node
 node_modules/
 
-# Next.js
-.next/
-.next-new/
-.next-old/
-out/
-
 # OS files
 .DS_Store
 Thumbs.db

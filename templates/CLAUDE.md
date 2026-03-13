@@ -5,20 +5,19 @@ This directory contains files that get copied into user projects when they run `
 ## Rules
 
 - **NEVER** add event handler code, API route handlers, or core logic here. All of that belongs in the NPM package (`api/`, `lib/`, `config/`, `bin/`).
-- Templates exist solely to scaffold a new user's project folder with thin wiring and user-editable configuration.
+- Templates exist solely to scaffold a new user's project folder with configuration and infrastructure files.
 - Files here may be modified to fix wiring, update configuration defaults, or adjust scaffolding — but never to implement features.
+- **Next.js app source** (`app/`, `next.config.mjs`, `server.js`, etc.) lives in `web/` at the package root and is baked into the Docker image. It does NOT belong in templates.
 
 ## What belongs here
 
-- **Next.js wiring**: `next.config.mjs`, `instrumentation.js`, catch-all route, middleware — thin re-exports from `thepopebot/*`
 - **User-editable config**: `config/SOUL.md`, `config/JOB_PLANNING.md`, `config/CRONS.json`, `config/TRIGGERS.json`, etc.
 - **GitHub Actions workflows**: `.github/workflows/`
 - **Docker compose**: `docker-compose.yml`
-- **UI page shells**: `app/` pages that import components from the package (managed — auto-synced on upgrade)
-- **User CSS overrides**: `theme.css` (user-owned, not managed)
 
 ## What does NOT belong here
 
+- Next.js app files (pages, layouts, routes) — these live in `web/`
 - Route handlers with business logic
 - Library code (`lib/`)
 - Database operations
@@ -31,4 +30,4 @@ If you're adding a feature to the event handler, put it in the package. Template
 
 ## Managed vs. User-Owned
 
-Files inside managed paths (`app/`, `.github/workflows/`, etc.) are auto-synced by `init` — stale files are deleted, changed files are overwritten. Never add user-editable content to managed paths. User customization goes in `config/` or `theme.css`.
+Files inside managed paths (`.github/workflows/`, etc.) are auto-synced by `init` — stale files are deleted, changed files are overwritten. Never add user-editable content to managed paths. User customization goes in `config/`.

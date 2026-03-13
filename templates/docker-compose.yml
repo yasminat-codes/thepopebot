@@ -25,8 +25,15 @@ services:
     container_name: thepopebot-event-handler
     image: ${EVENT_HANDLER_IMAGE_URL:-stephengpope/thepopebot:event-handler-${THEPOPEBOT_VERSION:-latest}}
     volumes:
-      - .:/app
-      - /app/node_modules
+      - .:/project
+      - ./config:/app/config
+      - ./skills:/app/skills
+      - ./.env:/app/.env
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./cron:/app/cron
+      - ./triggers:/app/triggers
+      - ./CLAUDE.md:/app/CLAUDE.md
       - /var/run/docker.sock:/var/run/docker.sock
     labels:
       - traefik.enable=true
@@ -57,7 +64,7 @@ services:
       LABELS: self-hosted
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - .:/project:ro
+      - .:/project
     restart: unless-stopped
 
 volumes:

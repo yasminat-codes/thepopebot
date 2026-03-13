@@ -29,10 +29,9 @@
  *   2. npm pack → copy tarball to project
  *   3. mirrorTemplates() — overwrite + delete stale
  *   4. npm install tarball on host (--no-save)
- *   5. Next.js build on host
- *   6. Docker image build (patches Dockerfile for local tarball)
- *   7. docker compose up -d -V event-handler
- *   8. Cleanup tarball
+ *   5. Docker image build (patches Dockerfile for local tarball, includes Next.js build)
+ *   6. docker compose up -d -V event-handler
+ *   7. Cleanup tarball
  */
 import { execSync } from 'child_process';
 import fs from 'fs';
@@ -169,8 +168,8 @@ function buildDockerImage(projectPath) {
 
   // Replace npm install from registry with local tarball install
   dockerfile = dockerfile.replace(
-    /RUN npm install --omit=dev && \\\n\s+npm install --no-save thepopebot@\$\(node -p "require\('\.\/package\.json'\)\.version"\)/,
-    'RUN npm install --omit=dev && \\\n    npm install --no-save /tmp/thepopebot.tgz && rm /tmp/thepopebot.tgz'
+    /RUN npm install --omit=dev && \\\n\s+npm install --no-save thepopebot@\$\(node -p "require\('\.\/package\.json'\)\.version"\) && \\\n\s+npm install --no-save tailwindcss @tailwindcss\/postcss/,
+    'RUN npm install --omit=dev && \\\n    npm install --no-save /tmp/thepopebot.tgz && rm /tmp/thepopebot.tgz && \\\n    npm install --no-save tailwindcss @tailwindcss/postcss'
   );
 
   // Read version from package.json
@@ -236,15 +235,10 @@ export async function sync(projectPath) {
     console.log('\n  Installing package on host...');
     execSync(`npm install --no-save ${tarballDest}`, { stdio: 'inherit', cwd: projectPath });
 
-    // 5. Build Next.js on host (avoids OOM inside container)
-    console.log('\n  Building Next.js...');
-    fs.rmSync(path.join(projectPath, '.next'), { recursive: true, force: true });
-    execSync('npm run build', { stdio: 'inherit', cwd: projectPath });
-
-    // 6. Build Docker image with patched Dockerfile
+    // 5. Build Docker image with patched Dockerfile (includes Next.js build)
     buildDockerImage(projectPath);
 
-    // 7. Restart container (fresh start picks up .next via volume mount)
+    // 6. Restart container with new image
     console.log('\n  Restarting event handler...');
     execSync('docker compose up -d -V event-handler', { stdio: 'inherit', cwd: projectPath });
 

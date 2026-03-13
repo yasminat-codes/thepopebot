@@ -248,22 +248,12 @@ async function init() {
       name: dirName,
       private: true,
       scripts: {
-        dev: 'next dev --turbopack',
-        build: 'next build',
-        start: 'next start',
         setup: 'thepopebot setup',
         'setup-telegram': 'thepopebot setup-telegram',
         'reset-auth': 'thepopebot reset-auth',
       },
       dependencies: {
         thepopebot: thepopebotDep,
-        next: '^15.5.12',
-        'next-auth': '5.0.0-beta.30',
-        'next-themes': '^0.4.0',
-        react: '^19.0.0',
-        'react-dom': '^19.0.0',
-        tailwindcss: '^4.0.0',
-        '@tailwindcss/postcss': '^4.0.0',
       },
     };
     fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
@@ -622,24 +612,6 @@ async function upgrade() {
     process.exit(1);
   }
 
-  // --- Clear .next ---
-  try {
-    fs.rmSync(path.join(cwd, '.next'), { recursive: true, force: true });
-  } catch {}
-
-  // --- Build ---
-  console.log('\n  Building...\n');
-  try {
-    execSync('npm run build', { stdio: 'inherit', cwd });
-  } catch {
-    console.error('\n  Build failed. The upgrade has been applied but the project does not build.');
-    console.error('  Fix the build errors, then run:\n');
-    console.error(`    npm run build`);
-    console.error(`    git add -A && git commit -m "upgrade thepopebot to ${targetVersion}"`);
-    console.error('    git push\n');
-    process.exit(1);
-  }
-
   // --- Commit upgrade ---
   const changes = execSync('git status --porcelain', { encoding: 'utf8', cwd }).trim();
   if (changes) {
@@ -668,8 +640,8 @@ async function upgrade() {
     try {
       const running = execSync('docker compose ps --status running -q', { encoding: 'utf8', cwd }).trim();
       if (running) {
-        console.log('  Restarting Docker containers...\n');
-        execSync('docker compose down && docker compose up -d', { stdio: 'inherit', cwd });
+        console.log('  Pulling new image and restarting Docker containers...\n');
+        execSync('docker compose pull event-handler && docker compose up -d', { stdio: 'inherit', cwd });
       }
     } catch {
       // Docker not available or not running — skip

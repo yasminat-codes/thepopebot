@@ -8,10 +8,10 @@ Technical reference for AI assistants modifying the thepopebot NPM package sourc
 
 The npm package (`api/`, `lib/`, `config/`, `bin/`) is published to npm. In production:
 
-- **Event handler**: Docker container installs the published package from npm. The user's project (`config/`, `skills/`, `.env`, `data/`) is volume-mounted at `/app`. Runs `server.js` via PM2 behind Traefik reverse proxy.
+- **Event handler**: Docker image bakes the npm package, Next.js app source (`web/`), and `.next` build output. User project directories (`config/`, `skills/`, `.env`, `data/`, etc.) are individually volume-mounted into `/app`. The full project is also mounted at `/project` for git access. Runs `server.js` via PM2 behind Traefik reverse proxy.
 - **`lib/paths.js`**: Central path resolver — ALL paths resolve from `process.cwd()`. This is how the installed npm package finds the volume-mounted user project files.
 - **Job containers**: Ephemeral Docker containers clone `job/*` branches separately — NOT volume-mounted. See `docker/CLAUDE.md`.
-- **Local install**: Gives users CLI tools (`init`, `setup`, `upgrade`) and thin Next.js wiring for dev.
+- **Local install**: Gives users CLI tools (`init`, `setup`, `upgrade`) and configuration scaffolding.
 
 ## Package vs. Templates — Where Code Goes
 
@@ -21,10 +21,11 @@ The `templates/` directory contains **only files that get scaffolded into user p
 
 **When adding or modifying event handler code, always put it in the package itself (e.g., `api/`, `lib/`), not in `templates/`.** Templates should only contain:
 - Configuration files users edit (`config/SOUL.md`, `config/CRONS.json`, etc.)
-- Thin Next.js wiring (`next.config.mjs`, `instrumentation.js`, catch-all route)
 - GitHub Actions workflows
 - Docker compose (`docker-compose.yml`)
 - CLAUDE.md files for AI assistant context in user projects
+
+Next.js app source files (`app/`, `next.config.mjs`, `server.js`, etc.) live in `web/` at the package root. These are built into the Docker image — NOT scaffolded to user projects.
 
 ### Managed Paths
 
@@ -33,11 +34,6 @@ Files in managed directories are auto-synced (created, updated, **and deleted**)
 - `.github/workflows/` — CI/CD workflows
 - `docker-compose.yml`, `.dockerignore` — Docker config
 - `CLAUDE.md` — AI assistant context
-- `app/` — All Next.js pages, layouts, and routes
-
-### CSS Customization
-
-`app/globals.css` is managed and auto-updated. Users customize appearance via `theme.css` (project root), which is loaded after globals.css and not managed — user owns it.
 
 ## Directory Structure
 
@@ -65,6 +61,13 @@ Files in managed directories are auto-synced (created, updated, **and deleted**)
 │   └── instrumentation.js      # Server startup hook (loads .env, starts crons)
 ├── bin/                        # CLI entry point (init, setup, reset, diff, upgrade)
 ├── setup/                      # Interactive setup wizard
+├── web/                        # Next.js app source (baked into Docker image, NOT scaffolded)
+│   ├── app/                    # Next.js app directory (pages, layouts, routes)
+│   ├── server.js               # Custom Next.js server with WebSocket proxy
+│   ├── next.config.mjs         # Next.js config wrapper
+│   ├── instrumentation.js      # Server startup hook
+│   ├── middleware.js            # Auth middleware
+│   └── postcss.config.mjs      # PostCSS/Tailwind config
 ├── templates/                  # Scaffolded to user projects (see rule above)
 ├── docs/                       # Extended documentation
 └── package.json

@@ -7,22 +7,15 @@ This is an autonomous AI agent powered by [thepopebot](https://github.com/stephe
 1. **Event Handler** — A Next.js server that orchestrates everything: web UI, Telegram chat, cron scheduling, webhook triggers, and job creation.
 2. **Docker Agent** — A container that runs the Pi coding agent for autonomous task execution. Each job gets its own branch, container, and PR.
 
-All core logic lives in the `thepopebot` npm package. This project is a scaffolded shell — thin Next.js wiring, user-editable configuration, GitHub Actions workflows, and Docker files.
+All core logic lives in the `thepopebot` npm package. This project contains only configuration and data — the Next.js app, `.next` build output, and all web dependencies are baked into the Docker image.
 
 ## Directory Structure
 
 ```
 project-root/
 ├── CLAUDE.md                          # This file (project documentation)
-├── next.config.mjs                    # Next.js config (wraps withThepopebot())
-├── instrumentation.js                 # Server startup hook (re-exports from package)
-├── middleware.js                       # Auth middleware (re-exports from package)
 ├── .env                               # API keys and tokens (gitignored)
 ├── package.json
-│
-├── app/                               # Next.js app directory (MANAGED — do not edit, auto-synced)
-│   ├── api/[...thepopebot]/route.js   # Catch-all API route (re-exports from package)
-│   └── stream/chat/route.js           # Chat streaming endpoint (session auth)
 │
 ├── config/                            # Agent configuration (user-editable)
 │   ├── SOUL.md                        # Personality, identity, and values
@@ -30,7 +23,7 @@ project-root/
 │   ├── JOB_AGENT.md                   # Agent runtime environment docs
 │   ├── JOB_SUMMARY.md                 # Prompt for summarizing completed jobs
 │   ├── HEARTBEAT.md                   # Self-monitoring / heartbeat behavior
-│   ├── SKILL_BUILDING_GUIDE.md             # Guide for building agent skills
+│   ├── SKILL_BUILDING_GUIDE.md        # Guide for building agent skills
 │   ├── CRONS.json                     # Scheduled job definitions
 │   └── TRIGGERS.json                  # Webhook trigger definitions
 │
@@ -294,17 +287,15 @@ SQLite via Drizzle ORM at `data/thepopebot.sqlite`. Auto-initialized and auto-mi
 
 ## Managed Files
 
-The following directories are auto-synced by `thepopebot init` and `thepopebot upgrade`. **Do not edit them** — changes will be overwritten on package updates: `.github/workflows/`, `docker-compose.yml`, `.dockerignore`, `CLAUDE.md`, `app/`.
+The following paths are auto-synced by `thepopebot init` and `thepopebot upgrade`. **Do not edit them** — changes will be overwritten on package updates: `.github/workflows/`, `docker-compose.yml`, `.dockerignore`, `CLAUDE.md`.
 
 To customize Docker Compose config without losing changes on upgrade, set `COMPOSE_FILE=docker-compose.custom.yml` in `.env`. The custom file is scaffolded by init but never overwritten.
 
-All UI components live in the npm package — `app/` only contains thin page shells that import from `thepopebot/chat`, `thepopebot/auth/components`, etc.
+The Next.js app and `.next` build output are baked into the Docker image — they do not exist in user projects.
 
 ## Customization
 
 User-editable config files in `config/`: `SOUL.md` (personality), `JOB_PLANNING.md` (LLM system prompt), `JOB_AGENT.md` (runtime docs), `JOB_SUMMARY.md` (job summaries), `HEARTBEAT.md` (self-monitoring), `SKILL_BUILDING_GUIDE.md` (skill guide), `CRONS.json` (scheduled jobs), `TRIGGERS.json` (webhook triggers).
-
-To customize appearance, edit `theme.css` in the project root (loaded after `globals.css`, user-owned, not managed).
 
 To customize Docker Compose (TLS, ports, volumes, extra services), edit `docker-compose.custom.yml` and set `COMPOSE_FILE=docker-compose.custom.yml` in `.env`. For Tailscale TLS, copy `traefik-dynamic.yml.example` to `traefik-dynamic.yml` and follow the instructions inside.
 

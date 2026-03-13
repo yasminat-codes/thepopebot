@@ -8,7 +8,6 @@ export const MANAGED_PATHS = [
   'docker-compose.yml',
   '.dockerignore',
   'CLAUDE.md',
-  'app/',
 ];
 
 export function isManaged(relPath) {

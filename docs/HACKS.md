@@ -6,7 +6,7 @@ Things we had to hack around because upstream doesn't provide an official API. C
 
 ## `app.didWebSocketSetup = true` (Next.js)
 
-**File:** `templates/server.js`
+**File:** `web/server.js`
 **Affects:** Next.js 15.x (and likely 16 — no fix announced)
 **Upstream issue:** [vercel/next.js#58698](https://github.com/vercel/next.js/discussions/58698)
 

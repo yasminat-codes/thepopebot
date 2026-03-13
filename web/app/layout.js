@@ -1,5 +1,4 @@
 import './globals.css';
-import '../theme.css';
 import { ThemeProvider, FeaturesProvider } from 'thepopebot/chat';
 
 export const metadata = {
