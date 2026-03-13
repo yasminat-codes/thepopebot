@@ -1,0 +1,4 @@
+{
+  "title": "Check the file system to verify if the linkedin-viral-orch skill",
+  "job": "Check the file system to verify if the linkedin-viral-orch skill was created successfully.\n\nTask:\n1. Check if `skills/linkedin-viral-orch/` directory exists\n2. List all files and subdirectories if it exists\n3. Check if `skills/active/linkedin-viral-orch` symlink exists\n4. Report back the full folder structure found (or confirm it doesn't exist)\n\nThis will tell us if the job completed successfully and built the entire skill structure."
+}
