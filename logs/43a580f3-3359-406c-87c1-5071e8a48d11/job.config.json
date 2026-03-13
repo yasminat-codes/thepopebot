@@ -1,0 +1,4 @@
+{
+  "title": "Check if the linkedin-viral-orch skill exists in the file system",
+  "job": "Check if the linkedin-viral-orch skill exists in the file system and document the results.\n\nTask:\n1. Check if skills/linkedin-viral-orch/ directory exists using ls\n2. If it exists, list all files and subdirectories recursively with find\n3. Check if skills/active/linkedin-viral-orch symlink exists\n4. Write the complete results to a file at output/skill-check-results.md\n\nThe output file should contain:\n- Whether the skill directory exists\n- Full folder structure if found\n- Whether the active symlink exists\n- List of all files in the skill folder\n\nThis will give us a clear answer about whether the skill was successfully created."
+}
