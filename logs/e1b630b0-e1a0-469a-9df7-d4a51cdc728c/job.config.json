@@ -1,0 +1,4 @@
+{
+  "title": "Enable the google-workspace skill by creating a symlink to activate",
+  "job": "Enable the google-workspace skill by creating a symlink to activate it.\n\nFiles to modify:\n- Create symlink: `ln -s ../google-workspace skills/active/google-workspace`\n\nThe skill is already configured with domain-wide delegation credentials at `/Users/yasmineseidu/coding/google.json` pointing to user `yasmine@smarterflo.com`, so no additional credential setup is needed.\n\nAfter creating the symlink, verify it's active by checking that `google-workspace` appears in the skills/active directory and can be used via commands like `npx google-workspace --help`."
+}
