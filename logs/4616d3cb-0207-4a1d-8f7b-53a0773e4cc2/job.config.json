@@ -1,0 +1,4 @@
+{
+  "title": "Install the agent-browser skill from https://github.com/vercel-labs/agent-browser",
+  "job": "Install the agent-browser skill from https://github.com/vercel-labs/agent-browser\n\nTask:\n1. Clone the repository: git clone https://github.com/vercel-labs/agent-browser.git\n2. Examine the contents to understand the structure\n3. Compare with existing skills in the repo to see if it's different from browser-tools\n4. If it's a valid skill package, integrate it into the skills/ directory\n5. Activate the skill by creating a symlink to skills/active/agent-browser\n6. Write findings to output/agent-browser-installation.md\n\nThe skill should provide browser automation capabilities. Check if it's:\n- A complete skill with SKILL.md\n- Requires specific setup or credentials\n- A direct replacement or addition to existing browser-tools\n\nCreate a complete integration if it's ready to use."
+}
