@@ -1,4 +1,0 @@
-{
-  "title": "Activate and Test KIE-AI Skill with Symlink and Image Generation",
-  "job": "Activate the kie-ai skill by creating a symlink in the active skills directory, then test it to ensure it's working properly.\n\nSteps:\n1. Create the symlink: `ln -s ../kie-ai skills/active/kie-ai`\n2. Verify the symlink exists: `ls -la skills/active/kie-ai`\n3. Test the skill with a simple image generation command to ensure the API key is accessible and working:\n   ```bash\n   skills/kie-ai/generate-image.sh \"a beautiful sunset over mountains\" 16:9 1K jpg\n   ```\n4. If the test succeeds, the skill is ready to use. If it fails, diagnose the error and fix it.\n\nCommit the symlink creation with message: \"Activate kie-ai skill for image and video generation\""
-}
