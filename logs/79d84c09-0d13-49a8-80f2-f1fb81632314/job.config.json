@@ -1,4 +1,0 @@
-{
-  "title": "Activate the \"last30days\" skill by creating a symlink.",
-  "job": "Activate the \"last30days\" skill by creating a symlink.\n\nTask:\n1. Check if skills/last30days/ directory exists in the skills folder\n2. If it exists, create a symlink: ln -s ../last30days skills/active/last30days\n3. Verify the symlink was created successfully\n4. List the active skills to confirm it's now active\n\nIf the skill doesn't exist, report back what was found so we can create it if needed."
-}
