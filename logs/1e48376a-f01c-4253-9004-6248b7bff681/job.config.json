@@ -1,0 +1,4 @@
+{
+  "title": "Check and set up the google-workspace v2 skill:",
+  "job": "Check and set up the google-workspace v2 skill:\n\n1. Check if skills/google-workspace v2/ directory exists and what files it contains\n2. Check if the skill is already active (symlink in skills/active/)\n3. If the skill directory exists but isn't active, create the symlink to activate it\n4. Test the skill by running: gws gmail users getProfile --params '{\"userId\":\"me\"}'\n5. Check if the environment variable GOOGLE_WORKSPACE_CLI_CREDENTIALS_FILE is set\n6. Verify gws CLI is installed: gws --help\n7. Report back what works and what needs to be fixed\n\nUse the GOOGlE_WORKSPACE_CLI_CREDENTIALS_FILE GitHub secret that was just added (exposed as environment variable in Docker)."
+}
